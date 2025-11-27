@@ -1,0 +1,398 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* === HEADER === */
+.header {
+    width: 100%;
+    height: 70px;
+    background: #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.header .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-header {
+    width: 45px;
+}
+
+.header h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.admin-text {
+    color: #6370EA;   /* biru */
+    font-weight: 700;
+}
+
+.panel-text {
+    color: #000;      /* hitam */
+    font-weight: 700;
+}
+
+.search {
+    padding: 10px 20px;
+    border-radius: 25px;
+    width: 210px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    font-style: italic;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    background: #302850; /* biru gelap dominan */
+    color: white;
+    padding: 18px 0;
+    font-size: 15px;
+    position: relative;
+    margin-top: 30px;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 160px;
+    background: #9c1c2b;
+    color: white;
+    height: calc(100vh - 70px);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    padding: 15px 5px;
+}
+
+.profile-box {
+    text-align: center;
+}
+
+.profile {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.email {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.menu {
+    list-style: none;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.menu li {
+    margin: 22px 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.logout {
+    margin-top: 40px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background: white;
+    color: #9c1c2b;
+    font-weight: bold;
+}
+
+.content {
+    margin-left: 180px;
+    padding: 100px 70px;
+}
+
+.title-box h1 {
+    font-size: 42px;
+    color: #C2252C;
+    font-weight: 900;
+}
+
+.title-box small {
+    color: #777;
+    font-size: 13px;
+}
+
+.grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
+
+.grid img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.add-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 70px;
+    width: 75px;
+    height: 75px;
+    background: #FEC30D;
+    border-radius: 50%;
+    font-size: 45px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    background: #302850;
+    color: white;
+    padding: 18px 0;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+/* === MODAL === */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+/* FORM BOX */
+.modal-content {
+    width: 650px;
+    background: white;
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.13);
+}
+
+/* Upload + Keterangan layout */
+.modal-body {
+    display: flex;
+    gap: 35px;
+}
+
+.upload-box {
+    background: #dcdcdc;
+    width: 220px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.desc-box {
+    flex: 1;
+}
+
+.desc-box textarea {
+    width: 100%;
+    height: 150px;
+    border-radius: 18px;
+    border: none;
+    background: #dcdcdc;
+    padding: 15px;
+    resize: none;
+    font-size: 14px;
+}
+
+.modal-footer {
+    margin-top: 25px;
+    text-align: right;
+}
+
+.cancel-btn {
+    padding: 8px 25px;
+    font-size: 15px;
+    border-radius: 25px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.publish-btn {
+    padding: 8px 25px;
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+    background: #8AA2FF;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* TABLET (max-width 992px) */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 130px;
+    }
+
+    .content {
+        margin-left: 150px;
+        padding: 90px 40px;
+    }
+
+    .title-box h1 {
+        font-size: 32px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .add-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 35px;
+        bottom: 60px;
+        right: 40px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    .modal-body {
+        gap: 20px;
+    }
+
+    .upload-box {
+        width: 180px;
+        height: 150px;
+    }
+}
+
+/* PHABLET / HP LANDSCAPE (max-width 768px) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100px;
+        padding: 15px 0;
+    }
+
+    .profile {
+        width: 60px;
+        height: 60px;
+    }
+
+    .menu li {
+        font-size: 13px;
+        margin: 15px 0;
+    }
+
+    .content {
+        margin-left: 110px;
+        padding: 85px 25px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .title-box h1 {
+        font-size: 26px;
+    }
+
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .upload-box {
+        width: 100%;
+        height: 160px;
+    }
+
+    .desc-box textarea {
+        height: 120px;
+    }
+}
+
+/* HP PORTRAIT (max-width 576px) */
+@media (max-width: 576px) {
+    .header {
+        padding: 0 10px;
+    }
+
+    .sidebar {
+        position: absolute;
+        left: -100%;
+        transition: .3s;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 85px 15px;
+    }
+
+    .title-box h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .title-box small {
+        text-align: center;
+        display: block;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .add-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 30px;
+        right: 20px;
+        bottom: 25px;
+    }
+
+    .modal-content {
+        width: 92%;
+        padding: 25px;
+    }
+
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .upload-box {
+        width: 100%;
+        height: 150px;
+    }
+}

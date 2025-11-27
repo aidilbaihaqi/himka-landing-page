@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="css/inbox.css">
+</head>
+<body>
+    <!-- HEADER BAR -->
+    <header class="header">
+        <div class="left">
+            <img src="img/logo.png" class="logo-header" alt="logo">
+            <h2>
+                <span class="admin-text">ADMIN</span>
+                <span class="panel-text">PANEL</span>
+            </h2>
+        </div>
+
+        <input type="text" class="search" placeholder="cari..">
+    </header>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="profile-box">
+            <img class="profile" src="img/profile.jpg" alt="Profile">
+            <p class="email">admin@himka.id</p>
+        </div>
+
+        <ul class="menu">
+            <li><a href="dashboard.html">Quick Overview</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kegiatan.html">Kegiatan</a></li>
+            <li><a href="inbox.html">Inbox</a></li>
+        </ul>
+
+        <button class="logout" onclick="location.href='logout.html'">LOGOUT</button>
+    </div>
+
+    <!-- ===================== INBOX CONTENT ===================== -->
+    <div class="content">
+        <h1 class="inbox-title">INBOX</h1>
+
+        <!-- ITEM 1 -->
+        <div class="inbox-item" 
+            onclick="openPopup(
+                'Karina',
+                'karinamut@gmail.com',
+                '21 Oktober 2025',
+                'Halo admin, saya mau memberikan aspirasi. terkait fasilitas di ruangan 6, itu ac nya keduanya mati, bisa ga yaa minta tolong sampaikan ke petinggi kampus. makasi',
+                'img/notif1.jpg'
+            )">
+            <img src="img/notif1.jpg" class="icon">
+            <div class="text">
+                <p class="name">Karina</p>
+                <p class="message">Halo admin, saya mau memberikan aspirasi. terkait..</p>
+            </div>
+            <p class="date">21 Oktober 2025</p>
+        </div>
+
+        <hr>
+
+        <!-- ITEM 2 -->
+        <div class="inbox-item">
+            <img src="img/notif2.jpg" class="icon">
+            <div class="text">
+                <p class="name">Ucup</p>
+                <p class="message">Selamat siang, kenalin aku dari angkatan 2024..</p>
+            </div>
+            <p class="date">04 Oktober 2025</p>
+        </div>
+
+        <hr>
+
+        <!-- ITEM 3 -->
+        <div class="inbox-item">
+            <img src="img/notif3.jpg" class="icon">
+            <div class="text">
+                <p class="name">Siapa</p>
+                <p class="message">Tes?</p>
+            </div>
+            <p class="date">02 September 2025</p>
+        </div>
+
+        <hr>
+    </div>
+
+    <!-- POPUP MESSAGE -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">×</span>
+
+            <h2>INBOX</h2>
+
+            <div class="popup-header">
+                <img id="popup-icon" class="popup-icon">
+                <div>
+                    <p id="popup-name" class="popup-name"></p>
+                    <p id="popup-email" class="popup-email"></p>
+                    <p id="popup-date" class="popup-date"></p>
+                </div>
+            </div>
+
+            <div id="popup-message" class="popup-message"></div>
+
+            <button class="delete-btn">HAPUS</button>
+        </div>
+    </div>
+
+    <footer>
+        © HIMKA UMRAH Admin Panel 2025
+    </footer>
+    <script script src="js/inbox.js"></script>
+</body>
+</html>

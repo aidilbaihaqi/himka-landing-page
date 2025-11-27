@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* === HEADER === */
+.header {
+    width: 100%;
+    height: 70px;
+    background: #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.header .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-header {
+    width: 45px;
+}
+
+.header h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.admin-text {
+    color: #6370EA;   /* biru */
+    font-weight: 700;
+}
+
+.panel-text {
+    color: #000;      /* hitam */
+    font-weight: 700;
+}
+
+.search {
+    padding: 10px 20px;
+    border-radius: 25px;
+    width: 210px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    font-style: italic;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #302850;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 999;
+}
+
+/* AREA BACKGROUND */
+.logout-container {
+    width: 100%;
+    min-height: calc(100vh - 45px); /* cukup untuk menyentuh footer */
+    background: #f8e9c9;
+    display: flex;
+    flex-direction: column;   /* pisahkan judul dan card */
+    align-items: center;      /* center horizontal */
+    justify-content: center;  /* card berada di tengah vertical */
+    padding-top: 100px;       /* ruang untuk judul */
+    padding-bottom: 40px;
+}
+
+/* TITLE */
+.logout-title {
+    color: #b12222;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 25px; /* lebih mirip screenshot */
+    margin-top: -40px;   /* supaya posisi judul naik */
+}
+
+/* WHITE BOX */
+.logout-box {
+    width: 500px;
+    background: white;
+    margin: 0 auto;
+    border-radius: 22px;
+    padding: 25px 35px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* LEFT SIDE */
+.left-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout-profile {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.logout-email {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* RIGHT SIDE */
+.right-area {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    gap: 12px;
+}
+
+.btn-yes {
+    padding: 10px 0;
+    border-radius: 25px;
+    border: 2px solid black;
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    padding: 10px 0;
+    background: #b12222;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* CHECKBOX AREA */
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.remember input {
+    accent-color: #6370EA;
+}

@@ -1,0 +1,163 @@
+body {
+    font-family: "Times New Roman", serif;
+    background: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background: white;
+    padding: 40px 50px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+h1 {
+    color: #b31217;
+    font-size: 48px;
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 60%;        /* panjang garis — bisa kamu sesuaikan */
+    height: 3px;       /* ketebalan garis */
+    background: #b31217; /* warna garis sama seperti warna judul */
+}
+
+.author {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #555;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: justify;
+    text-indent: 40px;
+}
+
+p:first-of-type {
+    text-indent: 0;
+}
+
+.dropcap {
+    float: left;
+    font-size: 45px;
+    line-height: 35px;
+    padding-right: 5px;
+    font-weight: bold;
+    margin-top: -5px; 
+    text-indent: 40px;  
+}
+
+.image-box {
+    float: right;
+    width: 40%;
+    margin-left: 20px;
+}
+
+.image-box img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* ============================
+   RESPONSIVE: TABLET (≤ 992px)
+   ============================ */
+@media (max-width: 992px) {
+
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h1::after {
+        width: 70%; /* garis lebih panjang sedikit di tablet */
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .image-box {
+        width: 45%;
+        right: 30px;
+        top: 140px;
+    }
+
+    .dropcap {
+        line-height: 25px;
+    }
+}
+
+/* ============================
+   RESPONSIVE: HP (≤ 600px)
+   ============================ */
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    h1::after {
+        width: 100%;
+        left: 0;
+        bottom: -8px;
+    }
+
+    .author {
+        text-align: center;
+        font-size: 13px;
+    }
+
+    /* Gambar jadi di bawah judul, full-width */
+    .image-box {
+        position: relative;
+        width: 100%;
+        right: 0;
+        top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .image-box img {
+        width: 100%;
+    }
+
+    /* paragraf hp */
+    p {
+        font-size: 16px;
+        text-indent: 30px;
+    }
+
+    p:first-of-type {
+        text-indent: 0; /* tetap! dropcap tidak kena indent */
+    }
+
+    /* dropcap untuk HP sedikit diperkecil */
+    .dropcap {
+        font-size: 38px;
+        line-height: 25px;
+        margin-top: 0;
+    }
+}

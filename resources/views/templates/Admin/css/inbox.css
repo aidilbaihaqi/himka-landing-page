@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* === HEADER === */
+.header {
+    width: 100%;
+    height: 70px;
+    background: #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.header .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-header {
+    width: 45px;
+}
+
+.header h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.admin-text {
+    color: #6370EA;   /* biru */
+    font-weight: 700;
+}
+
+.panel-text {
+    color: #000;      /* hitam */
+    font-weight: 700;
+}
+
+.search {
+    padding: 10px 20px;
+    border-radius: 25px;
+    width: 210px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    font-style: italic;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #302850;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 999;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 160px;
+    background: #9c1c2b;
+    color: white;
+    height: calc(100vh - 70px);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    padding: 15px 5px;
+}
+
+.profile-box {
+    text-align: center;
+}
+
+.profile {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.email {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.menu {
+    list-style: none;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.menu li {
+    margin: 22px 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.logout {
+    margin-top: 40px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background: white;
+    color: #9c1c2b;
+    font-weight: bold;
+}
+
+/* =============== INBOX CONTENT =============== */
+
+.content {
+    margin-left: 160px;
+    margin-top: 90px;
+    padding: 20px 40px;
+}
+
+.inbox-title {
+    font-size: 35px;
+    font-weight: 800;
+    color: #b12222;
+    display: inline-block;
+}
+
+.more-menu {
+    float: right;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.more-menu img {
+    width: 23px;
+    cursor: pointer;
+}
+
+/* LIST ITEM */
+.inbox-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+}
+
+.inbox-item .icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.inbox-item .text {
+    flex: 1;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin-top: 0px;
+    font-size: 14px;
+    color: #444;
+}
+
+.date {
+    white-space: nowrap;
+    font-size: 13.5px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: #e7e7e7;
+}
+
+/* POPUP BACKGROUND */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* POPUP BOX */
+.popup-content {
+    background: white;
+    width: 60%;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* CLOSE BUTTON */
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* HEADER */
+.popup-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.popup-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.popup-name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.popup-email {
+    color: #555;
+    font-size: 14px;
+}
+
+.popup-date {
+    font-size: 14px;
+}
+
+/* MESSAGE BOX */
+.popup-message {
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 15px;
+    min-height: 150px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.delete-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}

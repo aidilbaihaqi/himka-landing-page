@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="css/logout.css">
+</head>
+<body>
+    <!-- HEADER BAR -->
+    <header class="header">
+        <div class="left">
+            <img src="img/logo.png" class="logo-header" alt="logo">
+            <h2>
+                <span class="admin-text">ADMIN</span>
+                <span class="panel-text">PANEL</span>
+            </h2>
+        </div>
+
+        <input type="text" class="search" placeholder="cari..">
+    </header>
+
+    <div class="logout-container">
+
+        <h1 class="logout-title">APAKAH ANDA YAKIN INGIN LOG OUT DARI WEBSITE?</h1>
+
+        <div class="logout-box">
+
+            <!-- KIRI -->
+            <div class="left-area">
+                <img src="img/profile.jpg" class="logout-profile">
+                <p class="logout-email">admin@himka.id</p>
+            </div>
+
+            <!-- KANAN -->
+            <div class="right-area">
+                <button class="btn-yes" onclick="location.href='login.html'">YA</button>
+
+                <button class="btn-cancel" onclick="location.href='dashboard.html'">BATAL</button>
+
+                <label class="remember">
+                    <input type="checkbox" checked>
+                    <span>Selalu ingat E-mail saya</span>
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        © HIMKA UMRAH Admin Panel 2025
+    </footer>
+</body>
+</html>

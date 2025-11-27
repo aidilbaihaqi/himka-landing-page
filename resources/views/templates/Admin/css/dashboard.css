@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* === HEADER === */
+.header {
+    width: 100%;
+    height: 70px;
+    background: #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.header .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-header {
+    width: 45px;
+}
+
+.header h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.admin-text {
+    color: #6370EA;   /* biru */
+    font-weight: 700;
+}
+
+.panel-text {
+    color: #000;      /* hitam */
+    font-weight: 700;
+}
+
+.search {
+    padding: 10px 20px;
+    border-radius: 25px;
+    width: 210px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    font-style: italic;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    background: #302850; /* biru gelap dominan */
+    color: white;
+    padding: 18px 0;
+    font-size: 15px;
+    position: relative;
+    margin-top: 30px;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 160px;
+    background: #9c1c2b;
+    color: white;
+    height: calc(100vh - 70px);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    padding: 15px 5px;
+}
+
+.profile-box {
+    text-align: center;
+}
+
+.profile {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.email {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.menu {
+    list-style: none;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.menu li {
+    margin: 22px 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.logout {
+    margin-top: 40px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background: white;
+    color: #9c1c2b;
+    font-weight: bold;
+}
+
+/* === MAIN === */
+.main {
+    margin-left: 160px;
+    margin-top: 90px;
+    padding: 20px;
+}
+
+.welcome {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #9c1c2b;
+}
+
+/* === GRID === */
+.grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1.2fr 1.4fr;
+    grid-template-areas:
+        "visits calendar"
+        "activity gallery"
+        "activity notif";
+}
+
+/* Area mapping */
+.visits { grid-area: visits; }
+.calendar-card { grid-area: calendar; }
+.activity { grid-area: activity; }
+.gallery-box { grid-area: gallery; }
+.notif { grid-area: notif; }
+
+.card {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Areas */
+.visits { 
+    grid-area: visits;
+    padding: 20px;
+    text-align: center;
+}
+.visits h3 {
+    font-size: 16px;
+}
+
+.calendar-card {
+    display: flex;
+    padding: 30px 40px;
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Bagian kiri */
+.cal-left {
+    margin-right: 60px;
+}
+
+.cal-month {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.cal-year {
+    font-size: 34px;
+    font-weight: 800;
+    color: #d92626;
+}
+
+/* Bagian kanan */
+.cal-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* GRID Kalender */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 kolom */
+    gap: 16px 25px; /* jarak vertikal & horizontal */
+}
+
+.calendar-grid span {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* highlight tanggal 31 */
+.highlight {
+    background: #ffd35b;
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+
+/* garis bawah */
+.cal-line {
+    width: 100%;
+    height: 6px;
+    background: #000;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.activity {
+    height: 100%;
+    text-align: center;
+}
+
+/* === Card Postingan Galeri (mirip gambar) === */
+.gallery-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    min-height: 150px;   /* biar proporsional */
+    transform: scale(0.95);
+}
+
+/* tulisan Postingan Galeri */
+.gallery-top {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+/* kotak angka */
+.gallery-numbers {
+    display: flex;
+    gap: 10px;
+}
+
+.gallery-numbers .num {
+    background: #2e2954;        /* warna ungu gelap */
+    color: white;
+    font-size: 52px;
+    font-weight: 700;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.notif {
+    min-height: 200px;
+    padding: 20px;
+    transform: scale(0.95);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notif-item img {
+    width: 40px;      /* kecilin ukurannya */
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;   /* biar tetap bulat */
+    margin-right: 10px;   /* jarak ke teks */
+}
+
+/* Calendar highlight */
+.activity {
+    min-height: 520px;
+    padding: 30px;
+}
+
+.active-date {
+    background: #ffcc00;
+    padding: 4px 0;
+    border-radius: 5px;
+}
+
+/* = Notifikasi = */
+.notif-item {
+    display: flex;
+    gap: 10px;
+    background: #efefef;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+/* ============== RESPONSIVE TABLET ============== */
+@media (max-width: 992px) {
+
+    /* Grid jadi 1 kolom */
+    .grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "visits"
+            "calendar"
+            "activity"
+            "gallery"
+            "notif";
+    }
+
+    /* Sidebar jadi full width, turun ke bawah header */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 70px;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .main {
+        margin-left: 0;
+        margin-top: 150px; /* kasi jarak agar tidak tertutup sidebar */
+    }
+
+    .calendar-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .cal-left {
+        margin-right: 0;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+}
+
+/* ============== RESPONSIVE HP (MAX 768px) ============== */
+@media (max-width: 768px) {
+
+    .header {
+        padding: 0 15px;
+    }
+
+    .search {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    .welcome {
+        font-size: 22px;
+    }
+
+    .gallery-numbers .num {
+        width: 60px;
+        height: 60px;
+        font-size: 40px;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .notif-item img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* ============== RESPONSIVE HP KECIL (MAX 480px) ============== */
+@media (max-width: 480px) {
+
+    .header h2 {
+        font-size: 14px;
+    }
+
+    .search {
+        display: none; /* hilangkan pencarian biar header tidak penuh */
+    }
+
+    .gallery-top {
+        font-size: 18px;
+    }
+
+    .gallery-numbers .num {
+        width: 50px;
+        height: 50px;
+        font-size: 32px;
+    }
+
+    .calendar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    footer {
+        font-size: 13px;
+        padding: 14px 0;
+    }
+}

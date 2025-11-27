@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestasi</title>
+    <link rel="stylesheet" href="css/folder.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="left">
+            <img src="../img/logo.png" class="logo-header" alt="logo">
+            <h2>
+                <span class="admin-text">ADMIN</span>
+                <span class="panel-text">PANEL</span>
+            </h2>
+        </div>
+        <input type="text" class="search" placeholder="cari..">
+    </header>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="profile-box">
+            <img class="profile" src="../img/profile.jpg" alt="Profile">
+            <p class="email">admin@himka.id</p>
+        </div>
+
+        <ul class="menu">
+            <li><a href="../dashboard.html">Quick Overview</a></li>
+            <li><a href="../galeri.html">Galeri</a></li>
+            <li><a href="../kegiatan.html">Kegiatan</a></li>
+            <li><a href="../inbox.html">Inbox</a></li>
+        </ul>
+
+        <button class="logout" onclick="location.href='../logout.html'">LOGOUT</button>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+        <div class="title-box">
+            <h1>PROGRAM KERJA</h1>
+            <small>32 items</small>
+        </div>
+
+        <div class="grid">
+            <!-- Contoh dummy, tinggal looping -->
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+            <img src="../img/sample.jpg">
+        </div>
+
+        <button class="add-btn">+</button>
+
+        <!-- MODAL -->
+        <div id="uploadModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <!-- Upload area -->
+                    <label class="upload-box">
+                        <input type="file" hidden>
+                        <span>Upload Gambar</span>
+                    </label>
+
+                    <!-- Keterangan -->
+                    <div class="desc-box">
+                        <label>Keterangan</label>
+                        <textarea placeholder="Tulis keterangan..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="cancel-btn" onclick="closeModal()">BATAL</button>
+                    <button class="publish-btn">PUBLISH</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © HIMKA UMRAH Admin Panel 2025
+    </footer>
+    <script script src="js/folder.js"></script>
+</body>
+</html>

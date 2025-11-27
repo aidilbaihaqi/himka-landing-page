@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Folder Olahraga</title>
+    <link rel="stylesheet" href="../css/galeri.css">
+    <script>
+        function openDetail(i){
+        location.href = `olahraga_detail.html?foto=${i}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="header">FOLDER OLAHRAGA</div>
+
+    <div class="gallery">
+        <img src="img/1.jpg" onclick="openDetail(0)">
+        <img src="img/2.jpg" onclick="openDetail(1)">
+        <img src="img/3.jpg" onclick="openDetail(2)">
+        <img src="img/4.jpg" onclick="openDetail(3)">
+        <img src="img/5.jpg" onclick="openDetail(4)">
+        <img src="img/6.jpg" onclick="openDetail(5)">
+        <img src="img/7.jpg" onclick="openDetail(6)">
+        <img src="img/8.jpg" onclick="openDetail(7)">
+    </div>
+
+</body>
+</html>

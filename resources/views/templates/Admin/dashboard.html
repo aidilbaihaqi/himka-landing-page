@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- HEADER BAR -->
+    <header class="header">
+        <div class="left">
+            <img src="img/logo.png" class="logo-header" alt="logo">
+            <h2>
+                <span class="admin-text">ADMIN</span>
+                <span class="panel-text">PANEL</span>
+            </h2>
+        </div>
+
+        <input type="text" class="search" placeholder="cari..">
+    </header>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="profile-box">
+            <img class="profile" src="img/profile.jpg" alt="Profile">
+            <p class="email">admin@himka.id</p>
+        </div>
+
+        <ul class="menu">
+            <li><a href="dashboard.html">Quick Overview</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kegiatan.html">Kegiatan</a></li>
+            <li><a href="inbox.html">Inbox</a></li>
+        </ul>
+
+        <button class="logout" onclick="location.href='logout.html'">LOGOUT</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        
+        <h1 class="welcome">Welcome back, Admin.</h1>
+
+        <div class="grid">
+            <!-- Card Kunjungan -->
+            <div class="card visits">
+                <h3>Total Kunjungan Terakhir</h3>
+                <a href="#">84 Kunjungan</a>
+                <canvas id="visitsChart"></canvas>
+            </div>
+
+            <!-- Card Kalender -->
+            <div class="calendar-card">
+
+                <div class="cal-left">
+                    <div class="cal-month">OKTOBER</div>
+                    <div class="cal-year">2025</div>
+                </div>
+
+                <div class="cal-right">
+                    <div class="calendar-grid">
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                        <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                        <span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
+                        <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+                        <span class="highlight">31</span>
+                    </div>
+
+                    <div class="cal-line"></div>
+                </div>
+
+            </div>
+
+            <!-- Card Activity -->
+            <div class="card activity">
+                <h3>Published Activity</h3>
+                <a href="#">21 Kegiatan Terpublish</a>
+                <canvas id="activityChart"></canvas>
+            </div>
+
+            <!-- Card Postingan Galeri -->
+            <div class="card gallery-box">
+                <div class="gallery-top">
+                    Postingan<br>Galeri
+                </div>
+
+                <div class="gallery-numbers">
+                    <span class="num">8</span>
+                    <span class="num">0</span>
+                </div>
+            </div>
+
+            <!-- Card Notifikasi -->
+            <div class="card notif">
+                <h3>Notifikasi</h3>
+
+                <div class="notif-item">
+                    <img src="img/notif1.jpg" alt="pp">
+                    <div>
+                        <b>Karina</b>
+                        <p>Halo admin, saya mau memberikan aspirasi. terikat.</p>
+                    </div>
+                </div>
+
+                <div class="notif-item">
+                    <img src="img/notif2.jpg" alt="pp">
+                    <div>
+                        <b>Ucup</b>
+                        <p>Selamat siang, kenalin aku ucup dari angkatan 2024..</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        © HIMKA UMRAH Admin Panel 2025
+    </footer>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
