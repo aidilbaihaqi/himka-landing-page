@@ -2,11 +2,13 @@
 
 Website company profile untuk **Himpunan Mahasiswa Kimia (HIMKA)** Fakultas Teknik dan Teknologi Kemaritiman, Universitas Maritim Raja Ali Haji.
 
-## 🎨 Design Update v2.0.0
+## 🎨 Design Update v2.1.0
 
 Website ini telah diperbarui dengan:
 - ✅ **Color Palette Baru** berbasis Cream yang lebih hangat dan profesional
 - ✅ **Hero Section** dengan background image bertema kimia
+- ✅ **Gallery Carousel** dengan navigasi dan auto-play ⭐ NEW
+- ✅ **Section Berita** dengan featured news layout ⭐ NEW
 - ✅ **Responsive Design** untuk semua device
 - ✅ **Admin Dashboard** dengan UI yang lebih modern
 
@@ -85,7 +87,8 @@ Buka browser: `http://localhost:8000`
 - ✅ About section
 - ✅ Vision & Mission cards
 - ✅ Division showcase
-- ✅ Gallery grid
+- ✅ Gallery carousel (prev/next, indicators, auto-play) ⭐ NEW
+- ✅ News section (featured + regular news) ⭐ NEW
 - ✅ Contact form
 - ✅ Responsive navbar & footer
 
@@ -203,5 +206,30 @@ This project is proprietary software for HIMKA UMRAH.
 ---
 
 **Version**: 2.0.0  
+**Version**: 2.1.0  
 **Last Updated**: 11 Desember 2024  
 **Status**: ✅ Production Ready
+
+## 🆕 What's New in v2.1.0
+
+### Gallery Carousel
+- Interactive carousel dengan navigasi prev/next
+- Indicator dots untuk tracking slide
+- Auto-play setiap 5 detik
+- Smooth transitions
+- Overlay gradient dengan judul
+
+### News Section
+- Featured news dengan layout besar (2x2 grid)
+- Regular news dengan layout compact
+- Badge "FEATURED" untuk highlight
+- Tanggal publikasi dan author info
+- Hover effects dan image overlay
+- Responsive grid layout
+
+### Navigation Updates
+- Link "Berita" ditambahkan di navbar (desktop & mobile)
+- Link "Berita" ditambahkan di footer
+- Nav "Berita" ditambahkan di admin sidebar
+
+**Dokumentasi:** Lihat [UPDATE_GALERI_BERITA.md](UPDATE_GALERI_BERITA.md) untuk detail lengkap.

@@ -66,11 +66,11 @@
           <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Profil Organisasi</h3>
           <h2 class="text-4xl md:text-5xl font-serif font-bold text-himka-secondary mb-8">This Is HIMKA</h2>
           <p class="text-himka-secondary/80 leading-relaxed mb-6 text-lg">
-            HIMA Kimia Universitas Maritim Raja Ali Haji (HIMKA UMRH) dibentuk sebagai organisasi resmi yang menaungi
+            HIMA Kimia Universitas Maritim Raja Ali Haji (HIMKA UMRAH) dibentuk sebagai organisasi resmi yang menaungi
             seluruh mahasiswa Program Studi Kimia.
           </p>
           <p class="text-himka-secondary/80 leading-relaxed mb-8">
-            Sejak berdiri, HIMKA UMRH aktif menyelenggarakan berbagai kegiatan seperti seminar ilmiah, pelatihan,
+            Sejak berdiri, HIMKA UMRAH aktif menyelenggarakan berbagai kegiatan seperti seminar ilmiah, pelatihan,
             kompetisi, hingga kegiatan sosial untuk memperkuat kontribusi mahasiswa dalam lingkungan kampus dan masyarakat
             luas.
           </p>
@@ -195,7 +195,7 @@
     </div>
   </section>
 
-  <!-- GALLERY SECTION -->
+  <!-- GALLERY CAROUSEL SECTION -->
   <section class="py-24 bg-himka-cream" id="galery">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -203,43 +203,145 @@
           <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Dokumentasi</h3>
           <h2 class="text-4xl font-serif font-bold text-himka-secondary">Galeri Kegiatan</h2>
         </div>
+        <div class="flex items-center gap-4">
+          <button id="prevGallery" class="w-10 h-10 rounded-full bg-himka-secondary text-white flex items-center justify-center hover:bg-himka-secondary-dark transition-colors">
+            <span class="material-icons">chevron_left</span>
+          </button>
+          <button id="nextGallery" class="w-10 h-10 rounded-full bg-himka-secondary text-white flex items-center justify-center hover:bg-himka-secondary-dark transition-colors">
+            <span class="material-icons">chevron_right</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="relative overflow-hidden rounded-2xl">
+        <div id="galleryCarousel" class="flex transition-transform duration-500 ease-in-out">
+          @php
+            $galleries = [
+              ['img' => 'galeri1.jpg', 'title' => 'Prestasi Mahasiswa'],
+              ['img' => 'galeri2.jpg', 'title' => 'Sosialisasi'],
+              ['img' => 'galeri3.jpg', 'title' => 'Kegiatan Laboratorium'],
+              ['img' => 'galeri4.jpg', 'title' => 'Seminar Nasional'],
+              ['img' => 'galeri6.jpg', 'title' => 'Olahraga Bersama'],
+            ];
+          @endphp
+
+          @foreach($galleries as $gallery)
+            <div class="min-w-full relative group">
+              <img src="{{ asset('assets/img/' . $gallery['img']) }}"
+                class="w-full h-[500px] object-cover" alt="{{ $gallery['title'] }}">
+              <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-8">
+                <div>
+                  <h3 class="text-white font-bold text-2xl mb-2">{{ $gallery['title'] }}</h3>
+                  <p class="text-white/80 text-sm">HIMKA UMRAH</p>
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+
+        <!-- Indicators -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+          @foreach($galleries as $index => $gallery)
+            <button class="gallery-indicator w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" data-index="{{ $index }}"></button>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS SECTION -->
+  <section class="py-24 bg-white" id="berita">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
+          <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Informasi Terkini</h3>
+          <h2 class="text-4xl font-serif font-bold text-himka-secondary">Berita & Artikel</h2>
+        </div>
         <a href="#"
           class="hidden md:flex items-center gap-2 text-himka-accent font-bold hover:text-himka-secondary transition-colors">
           Lihat Semua <span class="material-icons text-sm">arrow_forward</span>
         </a>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[600px]">
-        <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-2xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Featured News (Large) -->
+        <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-lg">
           <img src="{{ asset('assets/img/galeri1.jpg') }}"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Galeri 1">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-himka-secondary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-            <span class="text-white font-bold text-xl">Prestasi Mahasiswa</span>
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Featured News">
+          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/95 via-himka-secondary/50 to-transparent flex items-end p-8">
+            <div>
+              <span class="inline-block px-3 py-1 bg-himka-accent text-white text-xs font-bold rounded-full mb-3">FEATURED</span>
+              <h3 class="text-white font-bold text-3xl mb-3 leading-tight">Mahasiswa Kimia UMRAH Raih Juara 1 Kompetisi Nasional</h3>
+              <p class="text-white/90 mb-4 line-clamp-2">Tim mahasiswa HIMKA berhasil meraih prestasi gemilang dalam kompetisi kimia tingkat nasional yang diselenggarakan di Jakarta.</p>
+              <div class="flex items-center gap-4 text-white/80 text-sm">
+                <span class="flex items-center gap-1">
+                  <span class="material-icons text-sm">calendar_today</span>
+                  10 Des 2024
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="material-icons text-sm">person</span>
+                  Admin HIMKA
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative group overflow-hidden rounded-2xl">
+
+        <!-- Regular News Items -->
+        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
           <img src="{{ asset('assets/img/galeri2.jpg') }}"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Galeri 2">
-          <div
-            class="absolute inset-0 bg-himka-secondary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <span class="text-white font-bold">Sosialisasi</span>
+            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 1">
+          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
+            <div>
+              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Sosialisasi Program Kerja HIMKA 2024</h4>
+              <span class="text-white/80 text-xs flex items-center gap-1">
+                <span class="material-icons text-xs">calendar_today</span>
+                8 Des 2024
+              </span>
+            </div>
           </div>
         </div>
-        <div class="relative group overflow-hidden rounded-2xl">
+
+        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
           <img src="{{ asset('assets/img/galeri3.jpg') }}"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Galeri 3">
+            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 2">
+          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
+            <div>
+              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Workshop Analisis Kimia Instrumen</h4>
+              <span class="text-white/80 text-xs flex items-center gap-1">
+                <span class="material-icons text-xs">calendar_today</span>
+                5 Des 2024
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="relative group overflow-hidden rounded-2xl">
+
+        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
           <img src="{{ asset('assets/img/galeri4.jpg') }}"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Galeri 4">
+            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 3">
+          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
+            <div>
+              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Seminar Nasional Kimia Maritim</h4>
+              <span class="text-white/80 text-xs flex items-center gap-1">
+                <span class="material-icons text-xs">calendar_today</span>
+                3 Des 2024
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="col-span-2 relative group overflow-hidden rounded-2xl">
+
+        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
           <img src="{{ asset('assets/img/galeri6.jpg') }}"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Galeri 6">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-himka-secondary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-            <span class="text-white font-bold text-lg">Olahraga Bersama</span>
+            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 4">
+          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
+            <div>
+              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Kegiatan Olahraga Bersama HIMKA</h4>
+              <span class="text-white/80 text-xs flex items-center gap-1">
+                <span class="material-icons text-xs">calendar_today</span>
+                1 Des 2024
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -296,3 +398,51 @@
     </div>
   </section>
 @endsection
+
+@push('scripts')
+<script>
+  // Gallery Carousel
+  const galleryCarousel = document.getElementById('galleryCarousel');
+  const prevBtn = document.getElementById('prevGallery');
+  const nextBtn = document.getElementById('nextGallery');
+  const indicators = document.querySelectorAll('.gallery-indicator');
+  let currentIndex = 0;
+  const totalSlides = {{ count($galleries) }};
+
+  function updateCarousel() {
+    galleryCarousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    indicators.forEach((indicator, index) => {
+      if (index === currentIndex) {
+        indicator.classList.remove('bg-white/50');
+        indicator.classList.add('bg-white');
+      } else {
+        indicator.classList.remove('bg-white');
+        indicator.classList.add('bg-white/50');
+      }
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+  });
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+  });
+
+  // Auto-play carousel
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+  }, 5000);
+</script>
+@endpush

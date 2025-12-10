@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'HIMKA UMRH - Kabinet Cakrawala')</title>
+  <title>@yield('title', 'HIMKA UMRAH - Kabinet Cakrawala')</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,8 +40,8 @@
             class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Profil</a>
           <a href="#galery"
             class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Galeri</a>
-          <a href="#kegiatan"
-            class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Kegiatan</a>
+          <a href="#berita"
+            class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Berita</a>
           <a href="#kontak"
             class="px-5 py-2 rounded-full border border-himka-accent bg-himka-accent text-white hover:bg-white hover:text-himka-accent transition-all duration-300 text-sm font-bold tracking-wide uppercase">Hubungi
             Kami</a>
@@ -64,7 +64,7 @@
         <a href="#home" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Beranda</a>
         <a href="#profil" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Profil</a>
         <a href="#galery" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Galeri</a>
-        <a href="#kegiatan" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Kegiatan</a>
+        <a href="#berita" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Berita</a>
         <a href="#kontak" class="block px-3 py-3 text-himka-accent font-bold text-lg">Hubungi Kami</a>
       </div>
     </div>
@@ -81,7 +81,7 @@
         <div class="text-center md:text-left">
           <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
             <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="h-10">
-            <span class="text-2xl font-bold tracking-wider">HIMKA UMRH</span>
+            <span class="text-2xl font-bold tracking-wider">HIMKA UMRAH</span>
           </div>
           <p class="text-white/80 text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
             Wadah aspirasi dan kreasi mahasiswa Kimia Universitas Maritim Raja Ali Haji. Reaksi Bersatu, Kimia Maju!
@@ -93,7 +93,8 @@
           <ul class="space-y-3 text-white/80">
             <li><a href="#home" class="hover:text-himka-cream transition-colors">Beranda</a></li>
             <li><a href="#profil" class="hover:text-himka-cream transition-colors">Profil</a></li>
-            <li><a href="#kegiatan" class="hover:text-himka-cream transition-colors">Kegiatan</a></li>
+            <li><a href="#galery" class="hover:text-himka-cream transition-colors">Galeri</a></li>
+            <li><a href="#berita" class="hover:text-himka-cream transition-colors">Berita</a></li>
           </ul>
         </div>
 
@@ -142,6 +143,8 @@
       navbar.classList.toggle('bg-himka-secondary', !isHidden);
     });
   </script>
+
+  @stack('scripts')
 </body>
 
 </html>

@@ -52,6 +52,11 @@
         </a>
         <a href="#"
           class="flex items-center gap-3 px-4 py-3 text-white/60 hover:bg-white/10 hover:text-white rounded-xl transition-colors font-medium">
+          <span class="material-icons">newspaper</span>
+          Berita
+        </a>
+        <a href="#"
+          class="flex items-center gap-3 px-4 py-3 text-white/60 hover:bg-white/10 hover:text-white rounded-xl transition-colors font-medium">
           <span class="material-icons">collections</span>
           Galeri
         </a>
