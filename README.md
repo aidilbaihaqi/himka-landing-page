@@ -1,59 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# HIMKA UMRAH - Company Profile
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website company profile untuk **Himpunan Mahasiswa Kimia (HIMKA)** Fakultas Teknik dan Teknologi Kemaritiman, Universitas Maritim Raja Ali Haji.
 
-## About Laravel
+## 🎨 Design Update v2.0.0
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Website ini telah diperbarui dengan:
+- ✅ **Color Palette Baru** berbasis Cream yang lebih hangat dan profesional
+- ✅ **Hero Section** dengan background image bertema kimia
+- ✅ **Responsive Design** untuk semua device
+- ✅ **Admin Dashboard** dengan UI yang lebih modern
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Color Scheme
+- **Main**: Cream (#F5E6D3) - Background utama
+- **Secondary**: Blue-Teal (#2C5F7C) - Navbar, footer, text
+- **Accent**: Orange-Terracotta (#D97642) - Buttons, highlights
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📚 Dokumentasi
 
-## Learning Laravel
+Untuk informasi lengkap tentang design system dan perubahan terbaru:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- **[RINGKASAN_PERUBAHAN.md](RINGKASAN_PERUBAHAN.md)** - Ringkasan lengkap dalam Bahasa Indonesia ⭐
+- **[COLOR_PALETTE.md](COLOR_PALETTE.md)** - Panduan color palette
+- **[HERO_SECTION_GUIDE.md](HERO_SECTION_GUIDE.md)** - Cara mengganti background hero
+- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Quick reference untuk developer
+- **[VISUAL_GUIDE.md](VISUAL_GUIDE.md)** - Visual guide layout dan components
+- **[CHANGELOG_DESIGN.md](CHANGELOG_DESIGN.md)** - Changelog detail
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Quick Start
 
-## Laravel Sponsors
+### Prerequisites
+- PHP >= 8.1
+- Composer
+- Node.js & NPM
+- MySQL/MariaDB
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Installation
 
-### Premium Partners
+1. Clone repository
+```bash
+git clone [repository-url]
+cd himka-umrah
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+2. Install dependencies
+```bash
+composer install
+npm install
+```
 
-## Contributing
+3. Setup environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Configure database di `.env`
+```
+DB_DATABASE=himka_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Code of Conduct
+5. Run migrations
+```bash
+php artisan migrate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6. Build assets
+```bash
+npm run build
+```
 
-## Security Vulnerabilities
+7. Start server
+```bash
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Buka browser: `http://localhost:8000`
 
-## License
+## 🎯 Features
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Landing Page
+- ✅ Hero section dengan background kimia
+- ✅ About section
+- ✅ Vision & Mission cards
+- ✅ Division showcase
+- ✅ Gallery grid
+- ✅ Contact form
+- ✅ Responsive navbar & footer
+
+### Admin Dashboard
+- ✅ Overview statistics
+- ✅ Visitor chart
+- ✅ Recent activities
+- ✅ Content management (coming soon)
+- ✅ Modern sidebar navigation
+
+## 🛠️ Tech Stack
+
+- **Backend**: Laravel 11
+- **Frontend**: Tailwind CSS 4.0
+- **Build Tool**: Vite
+- **Icons**: Material Icons
+- **Charts**: Chart.js
+- **Fonts**: Outfit, Playfair Display
+
+## 📁 Project Structure
+
+```
+himka-umrah/
+├── app/                    # Laravel application
+├── resources/
+│   ├── css/
+│   │   └── app.css        # Tailwind + Color definitions
+│   ├── views/
+│   │   ├── home.blade.php           # Landing page
+│   │   ├── layouts/
+│   │   │   ├── app.blade.php        # Frontend layout
+│   │   │   └── admin.blade.php      # Admin layout
+│   │   └── admin/
+│   │       └── dashboard.blade.php  # Dashboard
+├── public/
+│   └── assets/
+│       └── img/           # Images
+├── routes/
+│   └── web.php           # Routes
+└── vite.config.js        # Vite configuration
+```
+
+## 🎨 Customization
+
+### Mengganti Warna
+
+Edit `resources/css/app.css`:
+```css
+@theme {
+    --color-himka-cream: #F5E6D3;
+    --color-himka-secondary: #2C5F7C;
+    --color-himka-accent: #D97642;
+}
+```
+
+### Mengganti Background Hero
+
+Edit `resources/views/home.blade.php`:
+```html
+<div style="background-image: url('YOUR_IMAGE_URL');"></div>
+```
+
+Lihat [HERO_SECTION_GUIDE.md](HERO_SECTION_GUIDE.md) untuk detail lengkap.
+
+## 🔧 Development
+
+### Watch mode (auto-reload)
+```bash
+npm run dev
+```
+
+### Build for production
+```bash
+npm run build
+```
+
+### Clear cache
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+```
+
+## 📱 Responsive Breakpoints
+
+- Mobile: < 768px
+- Tablet: 768px - 1024px
+- Desktop: > 1024px
+
+## 🎯 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## 📝 License
+
+This project is proprietary software for HIMKA UMRAH.
+
+## 👥 Team
+
+**HIMKA UMRAH**
+- Email: himkafttkumrah@gmail.com
+- Instagram: @himka.umrah
+- Website: [Coming Soon]
+
+## 🙏 Credits
+
+- Design & Development: HIMKA IT Team
+- Images: Unsplash
+- Icons: Material Icons
+- Fonts: Google Fonts
+
+---
+
+**Version**: 2.0.0  
+**Last Updated**: 11 Desember 2024  
+**Status**: ✅ Production Ready

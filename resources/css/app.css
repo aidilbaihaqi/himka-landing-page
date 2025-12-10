@@ -21,9 +21,17 @@
     --color-primary-900: #0c4a6e;
     --color-primary-950: #082f49;
 
-    --color-himka-red: #A42824;
-    --color-himka-purple: #2F2F70;
-    --color-himka-cream: #FCF2E3;
+    /* New Color Palette - Cream Based */
+    --color-himka-cream: #F5E6D3;
+    --color-himka-cream-dark: #E8D4BA;
+    --color-himka-secondary: #2C5F7C;
+    --color-himka-secondary-dark: #1E4A5F;
+    --color-himka-accent: #D97642;
+    --color-himka-accent-dark: #C25E2E;
+    
+    /* Legacy colors for backward compatibility */
+    --color-himka-red: #D97642;
+    --color-himka-purple: #2C5F7C;
 }
 
 @layer utilities {
