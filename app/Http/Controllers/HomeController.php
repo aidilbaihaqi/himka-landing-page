@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Gallery;
+use App\Models\Kegiatan;
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    public function index()
+    {
+        $galleries = Gallery::active()->orderBy('sort_order')->take(10)->get();
+        $featuredArticle = Article::published()->featured()->with('category', 'user')->latest()->first();
+        $articles = Article::published()->with('category', 'user')->latest()->take(4)->get();
+        $categories = Category::where('type', 'article')->withCount(['articles' => fn($q) => $q->published()])->get();
+
+        return view('home', compact('galleries', 'featuredArticle', 'articles', 'categories'));
+    }
+
+    public function articles(Request $request)
+    {
+        $articles = Article::published()
+            ->with('category', 'user')
+            ->when($request->category, fn($q) => $q->whereHas('category', fn($c) => $c->where('slug', $request->category)))
+            ->latest()
+            ->paginate(9);
+
+        $categories = Category::where('type', 'article')->withCount(['articles' => fn($q) => $q->published()])->get();
+        $currentCategory = $request->category ? Category::where('slug', $request->category)->first() : null;
+
+        return view('articles.index', compact('articles', 'categories', 'currentCategory'));
+    }
+
+    public function articleShow(Article $article)
+    {
+        if (!$article->is_published) {
+            abort(404);
+        }
+
+        $relatedArticles = Article::published()
+            ->where('id', '!=', $article->id)
+            ->when($article->category_id, fn($q) => $q->where('category_id', $article->category_id))
+            ->take(3)
+            ->get();
+
+        return view('articles.show', compact('article', 'relatedArticles'));
+    }
+}

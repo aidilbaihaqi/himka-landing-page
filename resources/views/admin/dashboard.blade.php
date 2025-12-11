@@ -1,151 +1,118 @@
 @extends('layouts.admin')
 
+@section('title', 'Dashboard')
+@section('page-title', 'Dashboard')
+
 @section('content')
-  <div class="mb-8 flex justify-between items-end">
-    <div>
-      <h1 class="text-2xl font-bold text-himka-secondary mb-1">Overview Dashboard</h1>
-      <p class="text-himka-secondary/60 text-sm">Welcome back, Admin! Here's what's happening today.</p>
-    </div>
-    <button
-      class="bg-himka-accent hover:bg-himka-accent-dark text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-colors">
-      <span class="material-icons text-sm">add</span> New Post
-    </button>
+  <div class="mb-8">
+    <h2 class="text-2xl font-bold text-himka-secondary mb-1">Selamat Datang, {{ auth()->user()->name }}!</h2>
+    <p class="text-himka-secondary/60">Berikut ringkasan aktivitas HIMKA UMRAH.</p>
   </div>
 
   <!-- Stats Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-    <div class="bg-white p-6 rounded-2xl shadow-sm border border-himka-secondary/5 flex items-center gap-4">
-      <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-        <span class="material-icons">visibility</span>
-      </div>
-      <div>
-        <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Total Visits</p>
-        <h3 class="text-2xl font-bold text-himka-secondary">24.5k</h3>
-      </div>
-    </div>
-
-    <div class="bg-white p-6 rounded-2xl shadow-sm border border-himka-secondary/5 flex items-center gap-4">
-      <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500">
-        <span class="material-icons">article</span>
-      </div>
-      <div>
-        <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Articles</p>
-        <h3 class="text-2xl font-bold text-himka-secondary">128</h3>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+    <div class="bg-white p-4 lg:p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
+      <div class="flex items-center gap-3 lg:gap-4">
+        <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+          <span class="material-icons text-xl lg:text-2xl">newspaper</span>
+        </div>
+        <div>
+          <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Berita</p>
+          <h3 class="text-xl lg:text-2xl font-bold text-himka-secondary">{{ $stats['articles'] }}</h3>
+        </div>
       </div>
     </div>
 
-    <div class="bg-white p-6 rounded-2xl shadow-sm border border-himka-secondary/5 flex items-center gap-4">
-      <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
-        <span class="material-icons">collections</span>
-      </div>
-      <div>
-        <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Gallery</p>
-        <h3 class="text-2xl font-bold text-himka-secondary">432</h3>
+    <div class="bg-white p-4 lg:p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
+      <div class="flex items-center gap-3 lg:gap-4">
+        <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500">
+          <span class="material-icons text-xl lg:text-2xl">event</span>
+        </div>
+        <div>
+          <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Kegiatan</p>
+          <h3 class="text-xl lg:text-2xl font-bold text-himka-secondary">{{ $stats['kegiatan'] }}</h3>
+        </div>
       </div>
     </div>
 
-    <div class="bg-white p-6 rounded-2xl shadow-sm border border-himka-secondary/5 flex items-center gap-4">
-      <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
-        <span class="material-icons">message</span>
+    <div class="bg-white p-4 lg:p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
+      <div class="flex items-center gap-3 lg:gap-4">
+        <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
+          <span class="material-icons text-xl lg:text-2xl">collections</span>
+        </div>
+        <div>
+          <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Galeri</p>
+          <h3 class="text-xl lg:text-2xl font-bold text-himka-secondary">{{ $stats['galleries'] }}</h3>
+        </div>
       </div>
-      <div>
-        <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Messages</p>
-        <h3 class="text-2xl font-bold text-himka-secondary">12</h3>
+    </div>
+
+    <div class="bg-white p-4 lg:p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
+      <div class="flex items-center gap-3 lg:gap-4">
+        <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
+          <span class="material-icons text-xl lg:text-2xl">people</span>
+        </div>
+        <div>
+          <p class="text-himka-secondary/50 text-xs uppercase font-bold tracking-wide">Pengurus</p>
+          <h3 class="text-xl lg:text-2xl font-bold text-himka-secondary">{{ $stats['pengurus'] }}</h3>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <!-- Chart Section -->
-    <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+    <!-- Recent Articles -->
+    <div class="bg-white p-4 lg:p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
       <div class="flex justify-between items-center mb-6">
-        <h3 class="font-bold text-lg text-himka-secondary">Visitor Statistics</h3>
-        <select class="bg-himka-cream border-none text-sm text-himka-secondary rounded-lg px-3 py-1 outline-none">
-          <option>Last 7 Days</option>
-          <option>Last Month</option>
-        </select>
+        <h3 class="font-bold text-lg text-himka-secondary">Berita Terbaru</h3>
+        <a href="{{ route('admin.articles.index') }}" class="text-himka-accent text-sm hover:underline">Lihat Semua</a>
       </div>
-      <div class="h-80 relative w-full">
-        <canvas id="visitorsChart"></canvas>
+
+      <div class="space-y-4">
+        @forelse($recentArticles as $article)
+          <div class="flex gap-4 items-start">
+            @if($article->image)
+              <img src="{{ Storage::url($article->image) }}" class="w-16 h-16 rounded-lg object-cover shrink-0" alt="">
+            @else
+              <div class="w-16 h-16 rounded-lg bg-himka-cream flex items-center justify-center shrink-0">
+                <span class="material-icons text-himka-secondary/30">image</span>
+              </div>
+            @endif
+            <div class="flex-1 min-w-0">
+              <h4 class="font-medium text-himka-secondary truncate">{{ $article->title }}</h4>
+              <p class="text-xs text-himka-secondary/50 mt-1">{{ $article->created_at->diffForHumans() }}</p>
+            </div>
+          </div>
+        @empty
+          <p class="text-himka-secondary/50 text-center py-4">Belum ada berita.</p>
+        @endforelse
       </div>
     </div>
 
-    <!-- Notifications Section -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
-      <h3 class="font-bold text-lg text-himka-secondary mb-6">Recent Activities</h3>
+    <!-- Recent Notulensi -->
+    <div class="bg-white p-4 lg:p-6 rounded-2xl shadow-sm border border-himka-secondary/5">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="font-bold text-lg text-himka-secondary">Notulensi Terbaru</h3>
+        <a href="{{ route('admin.notulensi.index') }}" class="text-himka-accent text-sm hover:underline">Lihat Semua</a>
+      </div>
 
-      <div class="space-y-6">
-        <div class="flex gap-4">
-          <img src="{{ asset('assets/img/notif1.jpg') }}" class="w-10 h-10 rounded-full object-cover" alt="User">
-          <div>
-            <p class="text-sm font-bold text-himka-secondary">Sarah Putri</p>
-            <p class="text-xs text-himka-secondary/60 mb-1">submitted a new article proposal.</p>
-            <span class="text-[10px] text-himka-secondary/40">2 mins ago</span>
+      <div class="space-y-4">
+        @forelse($recentNotulensi as $notulen)
+          <div class="flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-lg bg-himka-accent/10 flex items-center justify-center shrink-0">
+              <span class="material-icons text-himka-accent">description</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-medium text-himka-secondary truncate">{{ $notulen->title }}</h4>
+              <p class="text-xs text-himka-secondary/50 mt-1">
+                {{ $notulen->meeting_date->format('d M Y') }} • {{ $notulen->user->name }}
+              </p>
+            </div>
           </div>
-        </div>
-
-        <div class="flex gap-4">
-          <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-            <span class="material-icons text-blue-500 text-sm">upload</span>
-          </div>
-          <div>
-            <p class="text-sm font-bold text-himka-secondary">New Gallery Upload</p>
-            <p class="text-xs text-himka-secondary/60 mb-1">5 new photos added to 'Kegiatan Sosial'</p>
-            <span class="text-[10px] text-himka-secondary/40">1 hour ago</span>
-          </div>
-        </div>
-
-        <div class="flex gap-4">
-          <img src="{{ asset('assets/img/notif2.jpg') }}" class="w-10 h-10 rounded-full object-cover" alt="User">
-          <div>
-            <p class="text-sm font-bold text-himka-secondary">Budi Santoso</p>
-            <p class="text-xs text-himka-secondary/60 mb-1">sent a new message via Contact Form.</p>
-            <span class="text-[10px] text-himka-secondary/40">3 hours ago</span>
-          </div>
-        </div>
+        @empty
+          <p class="text-himka-secondary/50 text-center py-4">Belum ada notulensi.</p>
+        @endforelse
       </div>
     </div>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const ctx = document.getElementById('visitorsChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          datasets: [{
-            label: 'Visitors',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            borderColor: '#2C5F7C',
-            backgroundColor: 'rgba(44, 95, 124, 0.1)',
-            tension: 0.4,
-            fill: true
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                display: false
-              }
-            },
-            x: {
-              grid: {
-                display: false
-              }
-            }
-          }
-        }
-      });
-    });
-  </script>
 @endsection

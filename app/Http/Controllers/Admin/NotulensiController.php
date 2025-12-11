@@ -1,0 +1,106 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Notulensi;
+use App\Models\User;
+use App\Notifications\NotulensiCreated;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
+
+class NotulensiController extends Controller
+{
+    public function index(Request $request)
+    {
+        $notulensi = Notulensi::with('user')
+            ->when($request->search, fn($q) => $q->where('title', 'like', "%{$request->search}%"))
+            ->latest('meeting_date')
+            ->paginate(10);
+
+        return view('admin.notulensi.index', compact('notulensi'));
+    }
+
+    public function create()
+    {
+        return view('admin.notulensi.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'meeting_date' => 'required|date',
+            'meeting_time' => 'nullable',
+            'location' => 'nullable|max:255',
+            'attendees' => 'nullable',
+            'agenda' => 'required',
+            'discussion' => 'nullable',
+            'decisions' => 'nullable',
+            'action_items' => 'nullable',
+            'attachment' => 'nullable|file|max:5120',
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        if ($request->hasFile('attachment')) {
+            $validated['attachment'] = $request->file('attachment')->store('notulensi', 'public');
+        }
+
+        $notulensi = Notulensi::create($validated);
+
+        // Send notification to all users
+        $users = User::where('id', '!=', auth()->id())->get();
+        Notification::send($users, new NotulensiCreated($notulensi));
+
+        return redirect()->route('admin.notulensi.index')->with('success', 'Notulensi berhasil dibuat!');
+    }
+
+    public function show(Notulensi $notulensi)
+    {
+        return view('admin.notulensi.show', compact('notulensi'));
+    }
+
+    public function edit(Notulensi $notulensi)
+    {
+        return view('admin.notulensi.edit', compact('notulensi'));
+    }
+
+    public function update(Request $request, Notulensi $notulensi)
+    {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'meeting_date' => 'required|date',
+            'meeting_time' => 'nullable',
+            'location' => 'nullable|max:255',
+            'attendees' => 'nullable',
+            'agenda' => 'required',
+            'discussion' => 'nullable',
+            'decisions' => 'nullable',
+            'action_items' => 'nullable',
+            'attachment' => 'nullable|file|max:5120',
+        ]);
+
+        if ($request->hasFile('attachment')) {
+            if ($notulensi->attachment) {
+                Storage::disk('public')->delete($notulensi->attachment);
+            }
+            $validated['attachment'] = $request->file('attachment')->store('notulensi', 'public');
+        }
+
+        $notulensi->update($validated);
+
+        return redirect()->route('admin.notulensi.index')->with('success', 'Notulensi berhasil diupdate!');
+    }
+
+    public function destroy(Notulensi $notulensi)
+    {
+        if ($notulensi->attachment) {
+            Storage::disk('public')->delete($notulensi->attachment);
+        }
+        $notulensi->delete();
+
+        return redirect()->route('admin.notulensi.index')->with('success', 'Notulensi berhasil dihapus!');
+    }
+}

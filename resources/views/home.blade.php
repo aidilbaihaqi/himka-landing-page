@@ -198,8 +198,8 @@
   <!-- GALLERY CAROUSEL SECTION -->
   <section class="py-24 bg-himka-cream" id="galery">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-        <div>
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 text-center md:text-left">
+        <div class="mb-4 md:mb-0">
           <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Dokumentasi</h3>
           <h2 class="text-4xl font-serif font-bold text-himka-secondary">Galeri Kegiatan</h2>
         </div>
@@ -217,23 +217,29 @@
       <div class="relative overflow-hidden rounded-2xl">
         <div id="galleryCarousel" class="flex transition-transform duration-500 ease-in-out">
           @php
-            $galleries = [
+            $defaultGalleries = [
               ['img' => 'galeri1.jpg', 'title' => 'Prestasi Mahasiswa'],
               ['img' => 'galeri2.jpg', 'title' => 'Sosialisasi'],
               ['img' => 'galeri3.jpg', 'title' => 'Kegiatan Laboratorium'],
               ['img' => 'galeri4.jpg', 'title' => 'Seminar Nasional'],
               ['img' => 'galeri6.jpg', 'title' => 'Olahraga Bersama'],
             ];
+            $galleryItems = isset($galleries) && $galleries->count() > 0 ? $galleries : collect($defaultGalleries);
           @endphp
 
-          @foreach($galleries as $gallery)
+          @foreach($galleryItems as $index => $gallery)
             <div class="min-w-full relative group">
-              <img src="{{ asset('assets/img/' . $gallery['img']) }}"
-                class="w-full h-[500px] object-cover" alt="{{ $gallery['title'] }}">
+              @if(is_array($gallery))
+                <img src="{{ asset('assets/img/' . $gallery['img']) }}"
+                  class="w-full h-[500px] object-cover" alt="{{ $gallery['title'] }}">
+              @else
+                <img src="{{ Storage::url($gallery->image) }}"
+                  class="w-full h-[500px] object-cover" alt="{{ $gallery->title }}">
+              @endif
               <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-8">
                 <div>
-                  <h3 class="text-white font-bold text-2xl mb-2">{{ $gallery['title'] }}</h3>
-                  <p class="text-white/80 text-sm">HIMKA UMRAH</p>
+                  <h3 class="text-white font-bold text-2xl mb-2">{{ is_array($gallery) ? $gallery['title'] : $gallery->title }}</h3>
+                  <p class="text-white/80 text-sm">{{ is_array($gallery) ? 'HIMKA UMRAH' : ($gallery->description ?? 'HIMKA UMRAH') }}</p>
                 </div>
               </div>
             </div>
@@ -242,7 +248,7 @@
 
         <!-- Indicators -->
         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-          @foreach($galleries as $index => $gallery)
+          @foreach($galleryItems as $index => $gallery)
             <button class="gallery-indicator w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" data-index="{{ $index }}"></button>
           @endforeach
         </div>
@@ -253,97 +259,115 @@
   <!-- NEWS SECTION -->
   <section class="py-24 bg-white" id="berita">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-        <div>
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 text-center md:text-left">
+        <div class="mb-4 md:mb-0">
           <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Informasi Terkini</h3>
           <h2 class="text-4xl font-serif font-bold text-himka-secondary">Berita & Artikel</h2>
         </div>
-        <a href="#"
+        <a href="{{ route('articles.index') }}"
           class="hidden md:flex items-center gap-2 text-himka-accent font-bold hover:text-himka-secondary transition-colors">
           Lihat Semua <span class="material-icons text-sm">arrow_forward</span>
         </a>
       </div>
 
+      <!-- Category Filter -->
+      @if(isset($categories) && $categories->count() > 0)
+        <div class="flex items-center gap-2 mb-8 overflow-x-auto pb-2">
+          <a href="{{ route('home') }}#berita" class="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-himka-accent text-white">
+            Semua
+          </a>
+          @foreach($categories as $category)
+            <a href="{{ route('articles.index', ['category' => $category->slug]) }}"
+              class="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-himka-cream text-himka-secondary hover:bg-himka-secondary/10 transition-colors">
+              {{ $category->name }}
+            </a>
+          @endforeach
+        </div>
+      @endif
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Featured News (Large) -->
-        <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-lg">
-          <img src="{{ asset('assets/img/galeri1.jpg') }}"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Featured News">
-          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/95 via-himka-secondary/50 to-transparent flex items-end p-8">
-            <div>
-              <span class="inline-block px-3 py-1 bg-himka-accent text-white text-xs font-bold rounded-full mb-3">FEATURED</span>
-              <h3 class="text-white font-bold text-3xl mb-3 leading-tight">Mahasiswa Kimia UMRAH Raih Juara 1 Kompetisi Nasional</h3>
-              <p class="text-white/90 mb-4 line-clamp-2">Tim mahasiswa HIMKA berhasil meraih prestasi gemilang dalam kompetisi kimia tingkat nasional yang diselenggarakan di Jakarta.</p>
-              <div class="flex items-center gap-4 text-white/80 text-sm">
-                <span class="flex items-center gap-1">
-                  <span class="material-icons text-sm">calendar_today</span>
-                  10 Des 2024
-                </span>
-                <span class="flex items-center gap-1">
-                  <span class="material-icons text-sm">person</span>
-                  Admin HIMKA
-                </span>
+        @if(isset($featuredArticle) && $featuredArticle)
+          <!-- Featured News (Large) -->
+          <a href="{{ route('articles.show', $featuredArticle) }}" class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-lg block">
+            @if($featuredArticle->image)
+              <img src="{{ Storage::url($featuredArticle->image) }}"
+                class="w-full h-full min-h-[520px] object-cover transition-transform duration-700 group-hover:scale-110" alt="{{ $featuredArticle->title }}">
+            @else
+              <div class="w-full h-full min-h-[520px] bg-himka-secondary/20 flex items-center justify-center">
+                <span class="material-icons text-8xl text-himka-secondary/30">article</span>
+              </div>
+            @endif
+            <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/95 via-himka-secondary/50 to-transparent flex items-end p-8">
+              <div>
+                <span class="inline-block px-3 py-1 bg-himka-accent text-white text-xs font-bold rounded-full mb-3">FEATURED</span>
+                <h3 class="text-white font-bold text-3xl mb-3 leading-tight">{{ $featuredArticle->title }}</h3>
+                <p class="text-white/90 mb-4 line-clamp-2">{{ $featuredArticle->excerpt }}</p>
+                <div class="flex items-center gap-4 text-white/80 text-sm">
+                  <span class="flex items-center gap-1">
+                    <span class="material-icons text-sm">calendar_today</span>
+                    {{ $featuredArticle->published_at?->format('d M Y') ?? $featuredArticle->created_at->format('d M Y') }}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <span class="material-icons text-sm">person</span>
+                    {{ $featuredArticle->user->name ?? 'Admin' }}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </a>
+        @endif
 
         <!-- Regular News Items -->
-        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-          <img src="{{ asset('assets/img/galeri2.jpg') }}"
-            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 1">
-          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
-            <div>
-              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Sosialisasi Program Kerja HIMKA 2024</h4>
-              <span class="text-white/80 text-xs flex items-center gap-1">
-                <span class="material-icons text-xs">calendar_today</span>
-                8 Des 2024
-              </span>
+        @if(isset($articles) && $articles->count() > 0)
+          @foreach($articles->take(4) as $article)
+            @if(!isset($featuredArticle) || $article->id !== $featuredArticle->id)
+              <a href="{{ route('articles.show', $article) }}" class="relative group overflow-hidden rounded-2xl shadow-lg block">
+                @if($article->image)
+                  <img src="{{ Storage::url($article->image) }}"
+                    class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="{{ $article->title }}">
+                @else
+                  <div class="w-full h-[250px] bg-himka-secondary/10 flex items-center justify-center">
+                    <span class="material-icons text-6xl text-himka-secondary/30">article</span>
+                  </div>
+                @endif
+                <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
+                  <div>
+                    <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">{{ $article->title }}</h4>
+                    <span class="text-white/80 text-xs flex items-center gap-1">
+                      <span class="material-icons text-xs">calendar_today</span>
+                      {{ $article->published_at?->format('d M Y') ?? $article->created_at->format('d M Y') }}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            @endif
+          @endforeach
+        @else
+          <!-- Default static content when no articles -->
+          @php
+            $defaultNews = [
+              ['img' => 'galeri1.jpg', 'title' => 'Mahasiswa Kimia UMRAH Raih Juara 1', 'date' => '10 Des 2024'],
+              ['img' => 'galeri2.jpg', 'title' => 'Sosialisasi Program Kerja HIMKA 2024', 'date' => '8 Des 2024'],
+              ['img' => 'galeri3.jpg', 'title' => 'Workshop Analisis Kimia Instrumen', 'date' => '5 Des 2024'],
+              ['img' => 'galeri4.jpg', 'title' => 'Seminar Nasional Kimia Maritim', 'date' => '3 Des 2024'],
+            ];
+          @endphp
+          @foreach($defaultNews as $news)
+            <div class="relative group overflow-hidden rounded-2xl shadow-lg">
+              <img src="{{ asset('assets/img/' . $news['img']) }}"
+                class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="{{ $news['title'] }}">
+              <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
+                <div>
+                  <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">{{ $news['title'] }}</h4>
+                  <span class="text-white/80 text-xs flex items-center gap-1">
+                    <span class="material-icons text-xs">calendar_today</span>
+                    {{ $news['date'] }}
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-          <img src="{{ asset('assets/img/galeri3.jpg') }}"
-            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 2">
-          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
-            <div>
-              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Workshop Analisis Kimia Instrumen</h4>
-              <span class="text-white/80 text-xs flex items-center gap-1">
-                <span class="material-icons text-xs">calendar_today</span>
-                5 Des 2024
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-          <img src="{{ asset('assets/img/galeri4.jpg') }}"
-            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 3">
-          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
-            <div>
-              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Seminar Nasional Kimia Maritim</h4>
-              <span class="text-white/80 text-xs flex items-center gap-1">
-                <span class="material-icons text-xs">calendar_today</span>
-                3 Des 2024
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group overflow-hidden rounded-2xl shadow-lg">
-          <img src="{{ asset('assets/img/galeri6.jpg') }}"
-            class="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-110" alt="News 4">
-          <div class="absolute inset-0 bg-linear-to-t from-himka-secondary/90 via-transparent to-transparent flex items-end p-6">
-            <div>
-              <h4 class="text-white font-bold text-lg mb-2 line-clamp-2">Kegiatan Olahraga Bersama HIMKA</h4>
-              <span class="text-white/80 text-xs flex items-center gap-1">
-                <span class="material-icons text-xs">calendar_today</span>
-                1 Des 2024
-              </span>
-            </div>
-          </div>
-        </div>
+          @endforeach
+        @endif
       </div>
     </div>
   </section>
@@ -407,7 +431,7 @@
   const nextBtn = document.getElementById('nextGallery');
   const indicators = document.querySelectorAll('.gallery-indicator');
   let currentIndex = 0;
-  const totalSlides = {{ count($galleries) }};
+  const totalSlides = indicators.length;
 
   function updateCarousel() {
     galleryCarousel.style.transform = `translateX(-${currentIndex * 100}%)`;
