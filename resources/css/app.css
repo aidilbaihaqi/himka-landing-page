@@ -26,11 +26,15 @@
     --color-himka-cream-dark: #E8D4BA;
     --color-himka-secondary: #2C5F7C;
     --color-himka-secondary-dark: #1E4A5F;
-    --color-himka-accent: #D97642;
-    --color-himka-accent-dark: #C25E2E;
+    
+    /* Accent Red - Full palette for light/dark backgrounds */
+    --color-himka-accent: #A42824;
+    --color-himka-accent-dark: #8B211E;
+    --color-himka-accent-light: #C73B36;
+    --color-himka-accent-lighter: #E85650;
     
     /* Legacy colors for backward compatibility */
-    --color-himka-red: #D97642;
+    --color-himka-red: #A42824;
     --color-himka-purple: #2C5F7C;
 }
 
