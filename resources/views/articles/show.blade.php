@@ -2,17 +2,22 @@
 
 @section('content')
 <!-- Article Header -->
-<section class="bg-himka-secondary pt-32 pb-16">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="bg-gradient-to-br from-himka-cream via-white to-himka-cream pt-32 pb-16 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#000_1px,transparent_1px)] bg-size-[32px_32px]"></div>
+  <div class="absolute top-0 right-0 w-96 h-96 bg-himka-secondary/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-himka-accent/5 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+  
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     @if($article->category)
       <span class="inline-block px-3 py-1 bg-himka-accent text-white text-xs font-bold rounded-full mb-4">
         {{ $article->category->name }}
       </span>
     @endif
-    <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6 leading-tight">
       {{ $article->title }}
     </h1>
-    <div class="flex flex-wrap items-center gap-4 text-himka-cream/80 text-sm">
+    <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
       <span class="flex items-center gap-2">
         <span class="material-icons text-sm">person</span>
         {{ $article->user->name ?? 'Admin' }}

@@ -22,11 +22,15 @@
     --color-primary-900: #581c87;
     --color-primary-950: #3b0764;
 
-    /* New Color Palette - Cream Based */
+    /* New Color Palette - Purple Chemistry Theme */
     --color-himka-cream: #F5E6D3;
     --color-himka-cream-dark: #E8D4BA;
-    --color-himka-secondary: #2C5F7C;
-    --color-himka-secondary-dark: #1E4A5F;
+    
+    /* Purple Secondary - Like Chemical Liquid (Even Darker) */
+    --color-himka-secondary: #3B0764;
+    --color-himka-secondary-dark: #2E0555;
+    --color-himka-secondary-light: #4C1D95;
+    --color-himka-secondary-lighter: #581C87;
     
     /* Accent Red - Full palette for light/dark backgrounds */
     --color-himka-accent: #A42824;
@@ -36,7 +40,7 @@
     
     /* Legacy colors for backward compatibility */
     --color-himka-red: #A42824;
-    --color-himka-purple: #2C5F7C;
+    --color-himka-purple: #6B21A8;
 }
 
 @layer utilities {

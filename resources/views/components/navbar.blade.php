@@ -5,36 +5,36 @@
       <a href="{{ url('/') }}" class="shrink-0 flex items-center gap-3 group">
         <img class="h-12 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300" src="{{ asset('assets/img/logo.png') }}" alt="HIMKA Logo">
         <div class="hidden md:block">
-          <h1 class="text-xl font-bold text-white tracking-wider leading-none">HIMKA</h1>
-          <p class="text-[0.6rem] text-white/80 tracking-widest uppercase">Universitas Maritim Raja Ali Haji</p>
+          <h1 id="nav-logo-title" class="text-xl font-bold text-gray-900 tracking-wider leading-none transition-colors duration-300">HIMKA</h1>
+          <p id="nav-logo-subtitle" class="text-[0.6rem] text-gray-600 tracking-widest uppercase transition-colors duration-300">Universitas Maritim Raja Ali Haji</p>
         </div>
       </a>
 
       <div class="hidden md:flex space-x-1 items-center">
-        <a href="{{ url('/') }}#home" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+        <a href="{{ url('/') }}#home" class="nav-link relative px-4 py-2 text-gray-900 hover:text-himka-secondary font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
           Beranda
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
         </a>
-        <a href="{{ url('/') }}#profil" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+        <a href="{{ url('/') }}#profil" class="nav-link relative px-4 py-2 text-gray-900 hover:text-himka-secondary font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
           Profil
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
         </a>
-        <a href="{{ url('/') }}#galery" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+        <a href="{{ url('/') }}#galery" class="nav-link relative px-4 py-2 text-gray-900 hover:text-himka-secondary font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
           Galeri
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
         </a>
-        <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+        <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 text-gray-900 hover:text-himka-secondary font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
           Berita
           <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
         </a>
         <a href="{{ url('/') }}#kontak"
-          class="ml-4 px-6 py-2.5 rounded-full border-2 border-himka-accent bg-himka-accent text-white hover:bg-transparent hover:text-white transition-all duration-300 text-sm font-bold tracking-wide uppercase hover:scale-105">
+          class="ml-4 px-6 py-2.5 rounded-full border-2 border-himka-accent bg-himka-accent text-white hover:bg-himka-accent-dark transition-all duration-300 text-sm font-bold tracking-wide uppercase hover:scale-105">
           Hubungi Kami
         </a>
       </div>
 
       <div class="md:hidden flex items-center">
-        <button id="mobile-menu-btn" class="text-white hover:text-himka-cream focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-colors">
+        <button id="mobile-menu-btn" class="nav-mobile-btn text-gray-900 hover:text-himka-secondary focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors">
           <svg class="h-7 w-7 menu-icon transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>

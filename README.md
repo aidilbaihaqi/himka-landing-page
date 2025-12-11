@@ -17,21 +17,10 @@ Website ini telah diperbarui dengan:
 - **Secondary**: Blue-Teal (#2C5F7C) - Navbar, footer, text
 - **Accent**: Orange-Terracotta (#D97642) - Buttons, highlights
 
-## 📚 Dokumentasi
-
-Untuk informasi lengkap tentang design system dan perubahan terbaru:
-
-- **[RINGKASAN_PERUBAHAN.md](RINGKASAN_PERUBAHAN.md)** - Ringkasan lengkap dalam Bahasa Indonesia ⭐
-- **[COLOR_PALETTE.md](COLOR_PALETTE.md)** - Panduan color palette
-- **[HERO_SECTION_GUIDE.md](HERO_SECTION_GUIDE.md)** - Cara mengganti background hero
-- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Quick reference untuk developer
-- **[VISUAL_GUIDE.md](VISUAL_GUIDE.md)** - Visual guide layout dan components
-- **[CHANGELOG_DESIGN.md](CHANGELOG_DESIGN.md)** - Changelog detail
-
 ## 🚀 Quick Start
 
 ### Prerequisites
-- PHP >= 8.1
+- PHP >= 8.2
 - Composer
 - Node.js & NPM
 - MySQL/MariaDB
@@ -40,8 +29,8 @@ Untuk informasi lengkap tentang design system dan perubahan terbaru:
 
 1. Clone repository
 ```bash
-git clone [repository-url]
-cd himka-umrah
+git clone https://github.com/aidilbaihaqi/himka-landing-page.git
+cd himka-landing-page
 ```
 
 2. Install dependencies
@@ -58,7 +47,7 @@ php artisan key:generate
 
 4. Configure database di `.env`
 ```
-DB_DATABASE=himka_db
+DB_DATABASE=himka
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -111,7 +100,7 @@ Buka browser: `http://localhost:8000`
 ## 📁 Project Structure
 
 ```
-himka-umrah/
+himka-landing-page/
 ├── app/                    # Laravel application
 ├── resources/
 │   ├── css/

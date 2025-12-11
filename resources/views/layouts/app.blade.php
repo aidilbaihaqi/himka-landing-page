@@ -75,14 +75,62 @@
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('backToTop');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navLogoTitle = document.getElementById('nav-logo-title');
+    const navLogoSubtitle = document.getElementById('nav-logo-subtitle');
+    const navMobileBtn = document.querySelector('.nav-mobile-btn');
     
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
+        // Navbar background
         navbar.classList.add('bg-himka-secondary/90', 'backdrop-blur-md', 'shadow-lg', 'py-0');
         navbar.classList.remove('bg-transparent', 'py-4');
+        
+        // Change text to white when scrolled
+        navLinks.forEach(link => {
+          link.classList.remove('text-gray-900', 'hover:text-himka-secondary');
+          link.classList.add('text-white', 'hover:text-himka-cream');
+        });
+        
+        if (navLogoTitle) {
+          navLogoTitle.classList.remove('text-gray-900');
+          navLogoTitle.classList.add('text-white');
+        }
+        
+        if (navLogoSubtitle) {
+          navLogoSubtitle.classList.remove('text-gray-600');
+          navLogoSubtitle.classList.add('text-white/80');
+        }
+        
+        if (navMobileBtn) {
+          navMobileBtn.classList.remove('text-gray-900', 'hover:text-himka-secondary', 'hover:bg-gray-100');
+          navMobileBtn.classList.add('text-white', 'hover:text-himka-cream', 'hover:bg-white/10');
+        }
       } else {
+        // Navbar transparent
         navbar.classList.add('bg-transparent', 'py-4');
         navbar.classList.remove('bg-himka-secondary/90', 'backdrop-blur-md', 'shadow-lg', 'py-0');
+        
+        // Change text to black when at top
+        navLinks.forEach(link => {
+          link.classList.remove('text-white', 'hover:text-himka-cream');
+          link.classList.add('text-gray-900', 'hover:text-himka-secondary');
+        });
+        
+        if (navLogoTitle) {
+          navLogoTitle.classList.remove('text-white');
+          navLogoTitle.classList.add('text-gray-900');
+        }
+        
+        if (navLogoSubtitle) {
+          navLogoSubtitle.classList.remove('text-white/80');
+          navLogoSubtitle.classList.add('text-gray-600');
+        }
+        
+        if (navMobileBtn) {
+          navMobileBtn.classList.remove('text-white', 'hover:text-himka-cream', 'hover:bg-white/10');
+          navMobileBtn.classList.add('text-gray-900', 'hover:text-himka-secondary', 'hover:bg-gray-100');
+        }
       }
       
       // Back to top button visibility
