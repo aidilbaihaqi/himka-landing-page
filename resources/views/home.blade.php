@@ -6,47 +6,48 @@
     <!-- Background Image with Chemistry Theme -->
     <div class="absolute inset-0 z-0">
       <!-- Chemistry Background Image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" 
            style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070');">
       </div>
       <!-- Dark Overlay for better text readability -->
-      <div class="absolute inset-0 bg-gradient-to-br from-himka-secondary/90 via-himka-secondary/85 to-himka-secondary-dark/90"></div>
+      <div class="absolute inset-0 bg-linear-to-br from-himka-secondary/90 via-himka-secondary/85 to-himka-secondary-dark/90"></div>
       <!-- Animated Accent Circles -->
-      <div
-        class="absolute top-0 left-0 w-96 h-96 bg-himka-accent/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse">
-      </div>
-      <div
-        class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-himka-accent/15 rounded-full blur-3xl translate-x-1/3 translate-y-1/3">
-      </div>
+      <div class="absolute top-0 left-0 w-96 h-96 bg-himka-accent/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse-glow"></div>
+      <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-himka-accent/15 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 animate-pulse-glow"></div>
+      <!-- Floating Decorative Elements -->
+      <div class="absolute top-1/4 right-1/4 w-4 h-4 bg-himka-accent/40 rounded-full animate-float"></div>
+      <div class="absolute top-1/3 left-1/4 w-3 h-3 bg-himka-cream/30 rounded-full animate-float-delayed"></div>
+      <div class="absolute bottom-1/3 right-1/3 w-2 h-2 bg-white/20 rounded-full animate-float"></div>
     </div>
 
-    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto" data-aos="fade-up">
-      <h2 class="text-himka-accent font-bold tracking-[0.5em] text-sm md:text-base mb-4 uppercase">Himpunan Mahasiswa Kimia
-      </h2>
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <h2 data-aos="fade-down" data-aos-delay="100" class="text-himka-accent-light font-bold tracking-[0.5em] text-sm md:text-base mb-4 uppercase">Himpunan Mahasiswa Kimia</h2>
+      <h1 data-aos="fade-up" data-aos-delay="200" class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-2xl">
         KABINET <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-himka-cream to-white">CAKRAWALA</span>
+        <span class="text-transparent bg-clip-text bg-linear-to-r from-himka-cream to-white">CAKRAWALA</span>
       </h1>
-      <p class="text-white/90 text-lg md:text-xl font-light tracking-wide mb-10 max-w-2xl mx-auto">
+      <p data-aos="fade-up" data-aos-delay="300" class="text-white/90 text-lg md:text-xl font-light tracking-wide mb-10 max-w-2xl mx-auto">
         "Reaksi Bersatu, Kimia Maju, Semangat Tak Pernah Luntur"
       </p>
 
-      <div class="flex flex-col md:flex-row gap-4 justify-center">
+      <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col md:flex-row gap-4 justify-center">
         <a href="#profil"
-          class="px-8 py-4 bg-himka-accent text-white font-bold rounded-full hover:bg-himka-accent-dark transition-all duration-300 shadow-lg hover:shadow-himka-accent/25 transform hover:-translate-y-1">
+          class="group px-8 py-4 bg-himka-accent text-white font-bold rounded-full hover:bg-himka-accent-dark transition-all duration-300 shadow-lg hover:shadow-himka-accent/25 transform hover:-translate-y-1 flex items-center justify-center gap-2">
           Tentang Kami
+          <span class="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </a>
-        <a href="#kegiatan"
-          class="px-8 py-4 border-2 border-himka-cream/40 text-white font-bold rounded-full hover:bg-himka-cream/10 backdrop-blur-sm transition-all duration-300">
-          Lihat Program
+        <a href="#galery"
+          class="px-8 py-4 border-2 border-himka-cream/40 text-white font-bold rounded-full hover:bg-himka-cream/10 hover:border-himka-cream backdrop-blur-sm transition-all duration-300">
+          Lihat Galeri
         </a>
       </div>
     </div>
 
     <!-- Scroll Down Indicator -->
     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <a href="#profil" class="text-white/50 hover:text-white transition-colors">
-        <span class="material-icons text-4xl">expand_more</span>
+      <a href="#profil" class="text-white/50 hover:text-white transition-colors flex flex-col items-center gap-1">
+        <span class="text-xs uppercase tracking-widest">Scroll</span>
+        <span class="material-icons text-3xl">expand_more</span>
       </a>
     </div>
   </section>
@@ -55,14 +56,16 @@
   <section class="py-24 bg-himka-cream" id="profil">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="relative">
-          <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-himka-accent"></div>
-          <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-himka-accent"></div>
-          <img src="{{ asset('assets/img/kegiatan2.jpg') }}" alt="About"
-            class="rounded-lg shadow-2xl w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+        <div class="relative" data-aos="fade-right">
+          <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-himka-accent transition-all duration-500 hover:w-32 hover:h-32"></div>
+          <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-himka-accent transition-all duration-500 hover:w-32 hover:h-32"></div>
+          <div class="img-hover-zoom rounded-lg shadow-2xl overflow-hidden">
+            <img src="{{ asset('assets/img/kegiatan2.jpg') }}" alt="About"
+              class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+          </div>
         </div>
 
-        <div>
+        <div data-aos="fade-left">
           <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Profil Organisasi</h3>
           <h2 class="text-4xl md:text-5xl font-serif font-bold text-himka-secondary mb-8">This Is HIMKA</h2>
           <p class="text-himka-secondary/80 leading-relaxed mb-6 text-lg">
@@ -75,17 +78,17 @@
             luas.
           </p>
 
-          <div class="flex gap-8 border-t border-himka-secondary/10 pt-8">
-            <div>
-              <span class="block text-4xl font-bold text-himka-accent mb-1">5+</span>
+          <div class="counter-section flex gap-8 border-t border-himka-secondary/10 pt-8">
+            <div class="text-center">
+              <span class="block text-4xl font-bold text-himka-accent mb-1" data-counter="5">0+</span>
               <span class="text-himka-secondary/60 text-sm uppercase tracking-wide">Tahun Berdiri</span>
             </div>
-            <div>
-              <span class="block text-4xl font-bold text-himka-accent mb-1">20+</span>
+            <div class="text-center">
+              <span class="block text-4xl font-bold text-himka-accent mb-1" data-counter="20">0+</span>
               <span class="text-himka-secondary/60 text-sm uppercase tracking-wide">Program Kerja</span>
             </div>
-            <div>
-              <span class="block text-4xl font-bold text-himka-accent mb-1">100+</span>
+            <div class="text-center">
+              <span class="block text-4xl font-bold text-himka-accent mb-1" data-counter="100">0+</span>
               <span class="text-himka-secondary/60 text-sm uppercase tracking-wide">Anggota Aktif</span>
             </div>
           </div>
@@ -97,75 +100,44 @@
   <!-- VISION MISI START -->
   <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16" data-aos="fade-up">
         <h2 class="text-4xl font-serif font-bold text-himka-secondary mb-4">Visi & Misi</h2>
         <div class="w-24 h-1 bg-himka-accent mx-auto rounded-full"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Visi Cards (Actually the list items from original HTML) -->
-        <div
-          class="bg-himka-cream p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-himka-secondary/5 group">
-          <div
-            class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 group-hover:bg-himka-accent transition-colors duration-300 shadow-sm">
-            <span class="material-icons text-himka-accent group-hover:text-white text-2xl">school</span>
-          </div>
-          <h3 class="font-bold text-lg mb-3 text-himka-secondary">Pendidikan Tinggi</h3>
-          <p class="text-himka-secondary/70 text-sm leading-relaxed">Menjadikan program studi kimia sebagai pusat
-            kecemerlangan
-            pendidikan tinggi, riset, dan tamadun maritim di ASEAN.</p>
-        </div>
+        @php
+          $visiMisi = [
+            ['icon' => 'school', 'title' => 'Pendidikan Tinggi', 'desc' => 'Menjadikan program studi kimia sebagai pusat kecemerlangan pendidikan tinggi, riset, dan tamadun maritim di ASEAN.'],
+            ['icon' => 'public', 'title' => 'Wawasan Nasional', 'desc' => 'Menyelenggarakan pendidikan dan pengajaran bidang kimia berwawasan kemaritiman di tingkat Nasional dan Regional.'],
+            ['icon' => 'handshake', 'title' => 'Kolaborasi', 'desc' => 'Penerapan kimia berwawasan kemaritiman dalam bentuk pengabdian kepada masyarakat melalui kolaborasi dengan stakeholder.'],
+            ['icon' => 'storefront', 'title' => 'Entrepreneurship', 'desc' => 'Aktivitas entrepreneurship di bidang kimia untuk kesejahteraan sosial masyarakat pesisir.'],
+          ];
+        @endphp
 
-        <div
-          class="bg-himka-cream p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-himka-secondary/5 group">
-          <div
-            class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 group-hover:bg-himka-accent transition-colors duration-300 shadow-sm">
-            <span class="material-icons text-himka-accent group-hover:text-white text-2xl">public</span>
+        @foreach($visiMisi as $index => $item)
+          <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}"
+            class="bg-himka-cream p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-himka-secondary/5 group hover:-translate-y-2">
+            <div
+              class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 group-hover:bg-himka-accent transition-colors duration-300 shadow-sm group-hover:scale-110">
+              <span class="material-icons text-himka-accent group-hover:text-white text-2xl transition-colors">{{ $item['icon'] }}</span>
+            </div>
+            <h3 class="font-bold text-lg mb-3 text-himka-secondary">{{ $item['title'] }}</h3>
+            <p class="text-himka-secondary/70 text-sm leading-relaxed">{{ $item['desc'] }}</p>
           </div>
-          <h3 class="font-bold text-lg mb-3 text-himka-secondary">Wawasan Nasional</h3>
-          <p class="text-himka-secondary/70 text-sm leading-relaxed">Menyelenggarakan pendidikan dan pengajaran bidang kimia
-            berwawasan kemaritiman di tingkat Nasional dan Regional.</p>
-        </div>
-
-        <div
-          class="bg-himka-cream p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-himka-secondary/5 group">
-          <div
-            class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 group-hover:bg-himka-accent transition-colors duration-300 shadow-sm">
-            <span class="material-icons text-himka-accent group-hover:text-white text-2xl">handshake</span>
-          </div>
-          <h3 class="font-bold text-lg mb-3 text-himka-secondary">Kolaborasi</h3>
-          <p class="text-himka-secondary/70 text-sm leading-relaxed">Penerapan kimia berwawasan kemaritiman dalam bentuk
-            pengabdian
-            kepada masyarakat melalui kolaborasi dengan stakeholder.</p>
-        </div>
-
-        <div
-          class="bg-himka-cream p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-himka-secondary/5 group">
-          <div
-            class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 group-hover:bg-himka-accent transition-colors duration-300 shadow-sm">
-            <span class="material-icons text-himka-accent group-hover:text-white text-2xl">storefront</span>
-          </div>
-          <h3 class="font-bold text-lg mb-3 text-himka-secondary">Entrepreneurship</h3>
-          <p class="text-himka-secondary/70 text-sm leading-relaxed">Aktivitas entrepreneurship di bidang kimia untuk
-            kesejahteraan
-            sosial masyarakat pesisir.</p>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>
 
   <!-- DIVISION SECTION -->
   <section class="py-24 bg-himka-secondary text-white relative overflow-hidden">
-    <div
-      class="absolute inset-0 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:16px_16px] opacity-20">
-    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] bg-size-[16px_16px] opacity-20"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16" data-aos="fade-up">
         <h2 class="text-4xl font-serif font-bold text-white mb-4">Divisi & Tupoksi</h2>
-        <p class="text-himka-cream/90 max-w-2xl mx-auto">Struktur organisasi yang solid untuk menjalankan roda
-          kepengurusan
-          HIMKA UMRAH.</p>
+        <p class="text-himka-cream/90 max-w-2xl mx-auto">Struktur organisasi yang solid untuk menjalankan roda kepengurusan HIMKA UMRAH.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -180,12 +152,13 @@
           ];
         @endphp
 
-        @foreach($divisions as $div)
-          <div
-            class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 group">
+        @foreach($divisions as $index => $div)
+          <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}"
+            class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 group hover:-translate-y-1 hover:border-himka-accent-light/30">
             <div class="flex items-center gap-4 mb-4">
-              <span
-                class="material-icons text-himka-accent text-3xl group-hover:scale-110 transition-transform">{{ $div['icon'] }}</span>
+              <div class="w-12 h-12 rounded-xl bg-himka-accent/20 flex items-center justify-center group-hover:bg-himka-accent transition-colors duration-300">
+                <span class="material-icons text-himka-accent-light group-hover:text-white text-2xl group-hover:scale-110 transition-all">{{ $div['icon'] }}</span>
+              </div>
               <h3 class="text-xl font-bold">{{ $div['title'] }}</h3>
             </div>
             <p class="text-white/70 text-sm leading-relaxed">{{ $div['desc'] }}</p>
@@ -198,16 +171,16 @@
   <!-- GALLERY CAROUSEL SECTION -->
   <section class="py-24 bg-himka-cream" id="galery">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 text-center md:text-left">
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 text-center md:text-left" data-aos="fade-up">
         <div class="mb-4 md:mb-0">
           <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Dokumentasi</h3>
           <h2 class="text-4xl font-serif font-bold text-himka-secondary">Galeri Kegiatan</h2>
         </div>
         <div class="flex items-center gap-4">
-          <button id="prevGallery" class="w-10 h-10 rounded-full bg-himka-secondary text-white flex items-center justify-center hover:bg-himka-secondary-dark transition-colors">
+          <button id="prevGallery" class="w-12 h-12 rounded-full bg-himka-secondary text-white flex items-center justify-center hover:bg-himka-accent transition-all duration-300 hover:scale-110 shadow-lg">
             <span class="material-icons">chevron_left</span>
           </button>
-          <button id="nextGallery" class="w-10 h-10 rounded-full bg-himka-secondary text-white flex items-center justify-center hover:bg-himka-secondary-dark transition-colors">
+          <button id="nextGallery" class="w-12 h-12 rounded-full bg-himka-secondary text-white flex items-center justify-center hover:bg-himka-accent transition-all duration-300 hover:scale-110 shadow-lg">
             <span class="material-icons">chevron_right</span>
           </button>
         </div>
@@ -259,14 +232,14 @@
   <!-- NEWS SECTION -->
   <section class="py-24 bg-white" id="berita">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 text-center md:text-left">
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 text-center md:text-left" data-aos="fade-up">
         <div class="mb-4 md:mb-0">
           <h3 class="text-himka-accent font-bold tracking-widest text-sm mb-2 uppercase">Informasi Terkini</h3>
           <h2 class="text-4xl font-serif font-bold text-himka-secondary">Berita & Artikel</h2>
         </div>
         <a href="{{ route('articles.index') }}"
-          class="hidden md:flex items-center gap-2 text-himka-accent font-bold hover:text-himka-secondary transition-colors">
-          Lihat Semua <span class="material-icons text-sm">arrow_forward</span>
+          class="group hidden md:flex items-center gap-2 text-himka-accent font-bold hover:text-himka-secondary transition-colors">
+          Lihat Semua <span class="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </a>
       </div>
 
@@ -375,46 +348,56 @@
   <!-- CONTACT SECTION -->
   <section class="py-24 bg-white border-t border-himka-cream" id="kontak">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-himka-secondary rounded-3xl p-1 md:p-12 overflow-hidden relative shadow-2xl">
-        <div
-          class="absolute top-0 right-0 w-64 h-64 bg-himka-accent/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3">
-        </div>
+      <div class="bg-himka-secondary rounded-3xl p-1 md:p-12 overflow-hidden relative shadow-2xl" data-aos="fade-up">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-himka-accent/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 animate-pulse-glow"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-himka-accent/10 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 animate-pulse-glow"></div>
 
         <div class="relative z-10 grid md:grid-cols-2 gap-12 p-8 md:p-0">
-          <div>
+          <div data-aos="fade-right" data-aos-delay="200">
             <h2 class="text-3xl font-serif font-bold text-white mb-6">Hubungi Kami</h2>
             <p class="text-white/80 mb-8 leading-relaxed">
               Jangan ragu untuk berbagi ide, keluhan, maupun aspirasi. Mari bersama membangun HIMKA UMRAH yang lebih baik.
             </p>
 
             <div class="space-y-4">
-              <div class="flex items-center gap-4 text-white/90">
-                <span class="material-icons text-himka-accent">email</span>
+              <a href="mailto:himkafttkumrah@gmail.com" class="flex items-center gap-4 text-white/90 hover:text-white transition-colors group">
+                <span class="w-10 h-10 rounded-full bg-himka-accent/20 flex items-center justify-center group-hover:bg-himka-accent transition-colors">
+                  <span class="material-icons text-himka-accent-light group-hover:text-white">email</span>
+                </span>
                 <span>himkafttkumrah@gmail.com</span>
-              </div>
+              </a>
+              <a href="https://instagram.com/himka.umrah" target="_blank" class="flex items-center gap-4 text-white/90 hover:text-white transition-colors group">
+                <span class="w-10 h-10 rounded-full bg-himka-accent/20 flex items-center justify-center group-hover:bg-himka-accent transition-colors">
+                  <span class="material-icons text-himka-accent-light group-hover:text-white">photo_camera</span>
+                </span>
+                <span>@himka.umrah</span>
+              </a>
               <div class="flex items-center gap-4 text-white/90">
-                <span class="material-icons text-himka-accent">location_on</span>
+                <span class="w-10 h-10 rounded-full bg-himka-accent/20 flex items-center justify-center">
+                  <span class="material-icons text-himka-accent-light">location_on</span>
+                </span>
                 <span>Universitas Maritim Raja Ali Haji</span>
               </div>
             </div>
           </div>
 
-          <form class="space-y-4">
+          <form class="space-y-4" data-aos="fade-left" data-aos-delay="300">
             <div>
               <input type="text" placeholder="Nama Lengkap"
-                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-himka-accent transition-colors">
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-himka-accent focus:bg-white/10 transition-all duration-300">
             </div>
             <div>
               <input type="email" placeholder="Alamat Email"
-                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-himka-accent transition-colors">
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-himka-accent focus:bg-white/10 transition-all duration-300">
             </div>
             <div>
               <textarea placeholder="Pesan Anda..." rows="4"
-                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-himka-accent transition-colors"></textarea>
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-himka-accent focus:bg-white/10 transition-all duration-300 resize-none"></textarea>
             </div>
             <button type="submit"
-              class="w-full bg-himka-accent text-white font-bold py-3 rounded-lg hover:bg-himka-accent-dark transition-colors">
-              Kirim Pesan
+              class="w-full bg-himka-accent text-white font-bold py-4 rounded-xl hover:bg-himka-accent-dark transition-all duration-300 hover:shadow-lg hover:shadow-himka-accent/25 flex items-center justify-center gap-2 group">
+              <span>Kirim Pesan</span>
+              <span class="material-icons text-sm group-hover:translate-x-1 transition-transform">send</span>
             </button>
           </form>
         </div>

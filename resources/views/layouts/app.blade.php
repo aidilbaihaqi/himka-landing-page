@@ -16,8 +16,34 @@
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+  <style>
+    /* Custom animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-float-delayed { animation: float 6s ease-in-out infinite 2s; }
+    .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+    
+    /* Counter animation */
+    .counter { display: inline-block; }
+    
+    /* Smooth image hover */
+    .img-hover-zoom { overflow: hidden; }
+    .img-hover-zoom img { transition: transform 0.5s ease; }
+    .img-hover-zoom:hover img { transform: scale(1.1); }
+  </style>
 </head>
 
 <body class="font-sans antialiased bg-himka-cream text-himka-secondary overflow-x-hidden">
@@ -29,9 +55,27 @@
 
   @include('components.footer')
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-himka-accent text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-himka-accent-dark hover:scale-110 z-50 flex items-center justify-center">
+    <span class="material-icons">keyboard_arrow_up</span>
+  </button>
+
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
   <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 50
+    });
+
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
+    
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
         navbar.classList.add('bg-himka-secondary/90', 'backdrop-blur-md', 'shadow-lg', 'py-0');
@@ -40,6 +84,20 @@
         navbar.classList.add('bg-transparent', 'py-4');
         navbar.classList.remove('bg-himka-secondary/90', 'backdrop-blur-md', 'shadow-lg', 'py-0');
       }
+      
+      // Back to top button visibility
+      if (window.scrollY > 500) {
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        backToTop.classList.add('opacity-0', 'invisible');
+        backToTop.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    // Back to top click
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Mobile menu toggle
@@ -50,6 +108,39 @@
       menu.classList.toggle('hidden');
       const isHidden = menu.classList.contains('hidden');
       navbar.classList.toggle('bg-himka-secondary', !isHidden);
+    });
+
+    // Counter animation
+    function animateCounter(element, target, duration = 2000) {
+      let start = 0;
+      const increment = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          element.textContent = target + '+';
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(start) + '+';
+        }
+      }, 16);
+    }
+
+    // Intersection Observer for counters
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll('[data-counter]');
+          counters.forEach(counter => {
+            const target = parseInt(counter.dataset.counter);
+            animateCounter(counter, target);
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter-section').forEach(section => {
+      counterObserver.observe(section);
     });
   </script>
 

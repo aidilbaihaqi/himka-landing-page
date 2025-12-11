@@ -1,32 +1,41 @@
 <!-- Navbar -->
-<nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+<nav class="fixed w-full z-50 transition-all duration-500" id="navbar">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      <div class="flex-shrink-0 flex items-center gap-3">
-        <img class="h-12 w-auto drop-shadow-lg" src="{{ asset('assets/img/logo.png') }}" alt="HIMKA Logo">
+      <a href="{{ url('/') }}" class="shrink-0 flex items-center gap-3 group">
+        <img class="h-12 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300" src="{{ asset('assets/img/logo.png') }}" alt="HIMKA Logo">
         <div class="hidden md:block">
           <h1 class="text-xl font-bold text-white tracking-wider leading-none">HIMKA</h1>
           <p class="text-[0.6rem] text-white/80 tracking-widest uppercase">Universitas Maritim Raja Ali Haji</p>
         </div>
-      </div>
+      </a>
 
-      <div class="hidden md:flex space-x-8 items-center">
-        <a href="{{ url('/') }}#home"
-          class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Beranda</a>
-        <a href="{{ url('/') }}#profil"
-          class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Profil</a>
-        <a href="{{ url('/') }}#galery"
-          class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Galeri</a>
-        <a href="{{ route('articles.index') }}"
-          class="text-white hover:text-himka-cream font-medium transition-colors text-sm tracking-wide uppercase">Berita</a>
+      <div class="hidden md:flex space-x-1 items-center">
+        <a href="{{ url('/') }}#home" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+          Beranda
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
+        </a>
+        <a href="{{ url('/') }}#profil" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+          Profil
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
+        </a>
+        <a href="{{ url('/') }}#galery" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+          Galeri
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
+        </a>
+        <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 text-white hover:text-himka-cream font-medium transition-all duration-300 text-sm tracking-wide uppercase group">
+          Berita
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-himka-accent group-hover:w-3/4 transition-all duration-300"></span>
+        </a>
         <a href="{{ url('/') }}#kontak"
-          class="px-5 py-2 rounded-full border border-himka-accent bg-himka-accent text-white hover:bg-white hover:text-himka-accent transition-all duration-300 text-sm font-bold tracking-wide uppercase">Hubungi
-          Kami</a>
+          class="ml-4 px-6 py-2.5 rounded-full border-2 border-himka-accent bg-himka-accent text-white hover:bg-transparent hover:text-white transition-all duration-300 text-sm font-bold tracking-wide uppercase hover:scale-105">
+          Hubungi Kami
+        </a>
       </div>
 
       <div class="md:hidden flex items-center">
-        <button id="mobile-menu-btn" class="text-white hover:text-himka-cream focus:outline-none">
-          <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="mobile-menu-btn" class="text-white hover:text-himka-cream focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-colors">
+          <svg class="h-7 w-7 menu-icon transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -35,14 +44,15 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div class="hidden md:hidden bg-himka-secondary/95 backdrop-blur-md absolute w-full border-t border-white/10"
-    id="mobile-menu">
-    <div class="px-4 pt-2 pb-6 space-y-1 text-center">
-      <a href="{{ url('/') }}#home" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Beranda</a>
-      <a href="{{ url('/') }}#profil" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Profil</a>
-      <a href="{{ url('/') }}#galery" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Galeri</a>
-      <a href="{{ route('articles.index') }}" class="block px-3 py-3 text-white hover:text-himka-cream font-medium text-lg">Berita</a>
-      <a href="{{ url('/') }}#kontak" class="block px-3 py-3 text-himka-accent font-bold text-lg">Hubungi Kami</a>
+  <div class="hidden md:hidden bg-himka-secondary/98 backdrop-blur-lg absolute w-full border-t border-white/10 shadow-2xl" id="mobile-menu">
+    <div class="px-4 pt-4 pb-6 space-y-2">
+      <a href="{{ url('/') }}#home" class="block px-4 py-3 text-white hover:text-himka-cream hover:bg-white/5 font-medium text-lg rounded-xl transition-all duration-300">Beranda</a>
+      <a href="{{ url('/') }}#profil" class="block px-4 py-3 text-white hover:text-himka-cream hover:bg-white/5 font-medium text-lg rounded-xl transition-all duration-300">Profil</a>
+      <a href="{{ url('/') }}#galery" class="block px-4 py-3 text-white hover:text-himka-cream hover:bg-white/5 font-medium text-lg rounded-xl transition-all duration-300">Galeri</a>
+      <a href="{{ route('articles.index') }}" class="block px-4 py-3 text-white hover:text-himka-cream hover:bg-white/5 font-medium text-lg rounded-xl transition-all duration-300">Berita</a>
+      <div class="pt-2 mt-2 border-t border-white/10">
+        <a href="{{ url('/') }}#kontak" class="block px-4 py-3 bg-himka-accent text-white font-bold text-lg rounded-xl text-center hover:bg-himka-accent-dark transition-colors">Hubungi Kami</a>
+      </div>
     </div>
   </div>
 </nav>
