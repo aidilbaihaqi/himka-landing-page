@@ -21,21 +21,23 @@
     --color-primary-900: #0c4a6e;
     --color-primary-950: #082f49;
 
-    /* New Color Palette - Cream Based */
-    --color-himka-cream: #F5E6D3;
+    /* Updates HIMKA Palette */
+    /* Cream - #FCF2E3 (Light background) */
+    --color-himka-cream: #FCF2E3;
     --color-himka-cream-dark: #E8D4BA;
-    --color-himka-secondary: #2C5F7C;
-    --color-himka-secondary-dark: #1E4A5F;
-    
-    /* Accent Red - Full palette for light/dark backgrounds */
+
+    /* Dark Purple - #2F2F70 (Primary/background) */
+    --color-himka-secondary: #2F2F70;
+    --color-himka-secondary-light: #43438E;
+    --color-himka-secondary-dark: #1F1F50;
+
+    /* Red - #A42824 (Accent) */
     --color-himka-accent: #A42824;
     --color-himka-accent-dark: #8B211E;
     --color-himka-accent-light: #C73B36;
-    --color-himka-accent-lighter: #E85650;
-    
-    /* Legacy colors for backward compatibility */
+
     --color-himka-red: #A42824;
-    --color-himka-purple: #2C5F7C;
+    --color-himka-purple: #2F2F70;
 }
 
 @layer utilities {
@@ -51,8 +53,69 @@
         @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl;
     }
 
+    .glass-nav {
+        @apply bg-himka-secondary/80 backdrop-blur-md border-b border-white/10 shadow-lg;
+    }
+
     .clip-hexagon {
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    /* Custom Animations */
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+        animation: float 6s ease-in-out 3s infinite;
+    }
+
+    @keyframes slideUpFade {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-slide-up {
+        animation: slideUpFade 0.8s ease-out forwards;
+    }
+
+    /* Parallax Utility */
+    .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* Hide scrollbar for carousel */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }
 
