@@ -55,7 +55,7 @@
     <div class="absolute inset-0 bg-[radial-gradient(#00000008_1px,transparent_1px)] bg-size-[32px_32px]"></div>
   </div>
 
-  <div class="max-w-md w-full relative z-10" data-aos="fade-up">
+  <div class="max-w-md w-full mt-20 relative z-10" data-aos="fade-up">
     <div class="text-center mb-8">
       <a href="{{ route('home') }}" class="inline-block group">
         <img src="{{ asset('assets/img/logo.png') }}" alt="HIMKA" class="h-20 mx-auto mb-4 drop-shadow-lg group-hover:scale-105 transition-transform duration-300">

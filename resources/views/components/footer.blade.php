@@ -1,3 +1,7 @@
+@php
+  $contactInfo = \App\Models\SiteSetting::getContactInfo();
+@endphp
+
 <!-- Footer -->
 <footer class="bg-gradient-to-br from-himka-cream via-white to-himka-cream pt-16 pb-8 border-t-4 border-himka-accent relative overflow-hidden">
   <!-- Background Image with Overlay -->
@@ -13,7 +17,8 @@
   <div class="absolute bottom-0 right-0 w-48 h-48 bg-himka-accent/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
   
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+      <!-- Brand -->
       <div class="text-center md:text-left" data-aos="fade-up" data-aos-delay="100">
         <a href="{{ url('/') }}" class="inline-flex items-center justify-center md:justify-start gap-3 mb-4 group">
           <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="h-12 group-hover:scale-110 transition-transform duration-300">
@@ -24,7 +29,8 @@
         </p>
       </div>
 
-      <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+      <!-- Quick Links -->
+      <div class="text-center md:text-left" data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-lg font-bold text-himka-secondary mb-6 uppercase tracking-widest">Tautan</h3>
         <ul class="space-y-3 text-gray-600">
           <li><a href="{{ url('/') }}#home" class="hover:text-himka-secondary hover:translate-x-1 inline-block transition-all duration-300">Beranda</a></li>
@@ -35,18 +41,69 @@
         </ul>
       </div>
 
-      <div class="text-center md:text-right" data-aos="fade-up" data-aos-delay="300">
-        <h3 class="text-lg font-bold text-himka-secondary mb-6 uppercase tracking-widest">Sosial Media</h3>
-        <div class="flex justify-center md:justify-end gap-4">
+      <!-- Contact Info -->
+      <div class="text-center md:text-left" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-lg font-bold text-himka-secondary mb-6 uppercase tracking-widest">Kontak</h3>
+        <ul class="space-y-4 text-gray-600">
+          @if($contactInfo['admin_name'])
+          <li class="flex items-start gap-3 justify-center md:justify-start">
+            <span class="material-icons text-himka-accent text-lg mt-0.5">person</span>
+            <span class="text-sm">{{ $contactInfo['admin_name'] }}</span>
+          </li>
+          @endif
+          @if($contactInfo['email'])
+          <li class="flex items-start gap-3 justify-center md:justify-start">
+            <span class="material-icons text-himka-accent text-lg mt-0.5">email</span>
+            <a href="mailto:{{ $contactInfo['email'] }}" class="text-sm hover:text-himka-secondary transition-colors">{{ $contactInfo['email'] }}</a>
+          </li>
+          @endif
+          @if($contactInfo['address'])
+          <li class="flex items-start gap-3 justify-center md:justify-start">
+            <span class="material-icons text-himka-accent text-lg mt-0.5">location_on</span>
+            <span class="text-sm">{{ $contactInfo['address'] }}</span>
+          </li>
+          @endif
+        </ul>
+        
+        <!-- Social Media -->
+        <div class="flex justify-center md:justify-start gap-3 mt-6">
           <a href="https://instagram.com/himka.umrah" target="_blank"
-            class="w-12 h-12 rounded-xl bg-himka-secondary/10 flex items-center justify-center hover:bg-himka-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-himka-accent/25 group">
-            <span class="material-icons text-himka-secondary group-hover:text-white text-xl group-hover:scale-110 transition-transform">photo_camera</span>
+            class="w-10 h-10 rounded-xl bg-himka-secondary/10 flex items-center justify-center hover:bg-himka-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-himka-accent/25 group">
+            <span class="material-icons text-himka-secondary group-hover:text-white text-lg group-hover:scale-110 transition-transform">photo_camera</span>
           </a>
-          <a href="mailto:himkafttkumrah@gmail.com"
-            class="w-12 h-12 rounded-xl bg-himka-secondary/10 flex items-center justify-center hover:bg-himka-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-himka-accent/25 group">
-            <span class="material-icons text-himka-secondary group-hover:text-white text-xl group-hover:scale-110 transition-transform">email</span>
+          @if($contactInfo['email'])
+          <a href="mailto:{{ $contactInfo['email'] }}"
+            class="w-10 h-10 rounded-xl bg-himka-secondary/10 flex items-center justify-center hover:bg-himka-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-himka-accent/25 group">
+            <span class="material-icons text-himka-secondary group-hover:text-white text-lg group-hover:scale-110 transition-transform">email</span>
           </a>
+          @endif
         </div>
+      </div>
+
+      <!-- Google Maps -->
+      <div class="text-center md:text-left" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-lg font-bold text-himka-secondary mb-6 uppercase tracking-widest">Lokasi</h3>
+        @if($contactInfo['maps_embed'])
+        <div class="rounded-xl overflow-hidden shadow-lg border border-himka-secondary/10">
+          <iframe 
+            src="{{ $contactInfo['maps_embed'] }}" 
+            width="100%" 
+            height="180" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="grayscale hover:grayscale-0 transition-all duration-500">
+          </iframe>
+        </div>
+        @else
+        <div class="rounded-xl bg-himka-secondary/5 h-[180px] flex items-center justify-center">
+          <div class="text-center text-himka-secondary/40">
+            <span class="material-icons text-4xl mb-2">map</span>
+            <p class="text-sm">Peta belum diatur</p>
+          </div>
+        </div>
+        @endif
       </div>
     </div>
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\NotulensiController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SiteSettingController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -58,4 +59,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+
+    // Site Settings
+    Route::get('settings', [SiteSettingController::class, 'edit'])->name('settings.edit');
+    Route::put('settings', [SiteSettingController::class, 'update'])->name('settings.update');
 });

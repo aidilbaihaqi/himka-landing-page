@@ -78,10 +78,15 @@
   </nav>
 
   <div class="p-3 border-t border-white/10">
+    <a href="{{ route('admin.settings.edit') }}"
+      class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.settings.*') ? 'bg-himka-accent text-white' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
+      <span class="material-icons text-xl">contact_mail</span>
+      Kontak Footer
+    </a>
     <a href="{{ route('admin.profile.edit') }}"
       class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.profile.*') ? 'bg-himka-accent text-white' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
-      <span class="material-icons text-xl">settings</span>
-      Pengaturan
+      <span class="material-icons text-xl">person</span>
+      Profil Saya
     </a>
     <form action="{{ route('logout') }}" method="POST">
       @csrf
