@@ -75,6 +75,12 @@
       <span class="material-icons text-xl">category</span>
       Kategori
     </a>
+
+    <a href="{{ route('admin.landing-page.edit') }}"
+      class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.landing-page.*') ? 'bg-himka-accent text-white shadow-lg' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
+      <span class="material-icons text-xl">web</span>
+      Landing Page
+    </a>
   </nav>
 
   <div class="p-3 border-t border-white/10">

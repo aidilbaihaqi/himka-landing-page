@@ -9,38 +9,38 @@
     --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
-    /* Purple Primary Palette */
-    --color-primary-50: #faf5ff;
-    --color-primary-100: #f3e8ff;
-    --color-primary-200: #e9d5ff;
-    --color-primary-300: #d8b4fe;
-    --color-primary-400: #c084fc;
-    --color-primary-500: #a855f7;
-    --color-primary-600: #9333ea;
-    --color-primary-700: #7e22ce;
-    --color-primary-800: #6b21a8;
-    --color-primary-900: #581c87;
-    --color-primary-950: #3b0764;
+    /* Orange Primary Palette */
+    --color-primary-50: #fff7ed;
+    --color-primary-100: #ffedd5;
+    --color-primary-200: #fed7aa;
+    --color-primary-300: #fdba74;
+    --color-primary-400: #fb923c;
+    --color-primary-500: #f97316;
+    --color-primary-600: #ea580c;
+    --color-primary-700: #c2410c;
+    --color-primary-800: #9a3412;
+    --color-primary-900: #7c2d12;
+    --color-primary-950: #431407;
 
-    /* New Color Palette - Purple Chemistry Theme */
-    --color-himka-cream: #F5E6D3;
-    --color-himka-cream-dark: #E8D4BA;
+    /* New Color Palette - Orange & Gray Theme */
+    --color-himka-cream: #FFF7ED;
+    --color-himka-cream-dark: #FFEDD5;
     
-    /* Purple Secondary - Like Chemical Liquid (Even Darker) */
-    --color-himka-secondary: #3B0764;
-    --color-himka-secondary-dark: #2E0555;
-    --color-himka-secondary-light: #4C1D95;
-    --color-himka-secondary-lighter: #581C87;
+    /* Orange Secondary - Main Color */
+    --color-himka-secondary: #EA580C;
+    --color-himka-secondary-dark: #C2410C;
+    --color-himka-secondary-light: #F97316;
+    --color-himka-secondary-lighter: #FB923C;
     
-    /* Accent Red - Full palette for light/dark backgrounds */
-    --color-himka-accent: #A42824;
-    --color-himka-accent-dark: #8B211E;
-    --color-himka-accent-light: #C73B36;
-    --color-himka-accent-lighter: #E85650;
+    /* Gray Accent */
+    --color-himka-accent: #374151;
+    --color-himka-accent-dark: #1F2937;
+    --color-himka-accent-light: #4B5563;
+    --color-himka-accent-lighter: #6B7280;
     
     /* Legacy colors for backward compatibility */
-    --color-himka-red: #A42824;
-    --color-himka-purple: #6B21A8;
+    --color-himka-red: #EA580C;
+    --color-himka-purple: #374151;
 }
 
 @layer utilities {
@@ -90,13 +90,13 @@ html {
 
 /* Selection color */
 ::selection {
-    background-color: var(--color-himka-accent);
+    background-color: var(--color-himka-secondary);
     color: white;
 }
 
 /* Focus visible for accessibility */
 :focus-visible {
-    outline: 2px solid var(--color-himka-accent);
+    outline: 2px solid var(--color-himka-secondary);
     outline-offset: 2px;
 }
 

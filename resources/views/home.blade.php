@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@php
+  $heroContent = \App\Models\LandingPageContent::getHero();
+  $profilContent = \App\Models\LandingPageContent::getProfil();
+  $ketuaUmumContent = \App\Models\LandingPageContent::getKetuaUmum();
+@endphp
+
 @section('content')
   <!-- HERO SECTION -->
   <section class="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-himka-cream via-white to-himka-cream" id="home">
@@ -35,7 +41,7 @@
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-himka-secondary to-himka-accent">CAKRAWALA</span>
       </h1>
       <p data-aos="fade-up" data-aos-delay="300" class="text-gray-700 text-lg md:text-xl font-light tracking-wide mb-10 max-w-2xl mx-auto">
-        "Reaksi Bersatu, Kimia Maju, Semangat Tak Pernah Luntur"
+        "{{ $heroContent['slogan'] }}"
       </p>
 
       <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col md:flex-row gap-4 justify-center">
@@ -68,35 +74,39 @@
           <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-himka-secondary transition-all duration-500 hover:w-32 hover:h-32"></div>
           <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-himka-secondary transition-all duration-500 hover:w-32 hover:h-32"></div>
           <div class="img-hover-zoom rounded-lg shadow-2xl overflow-hidden">
-            <img src="{{ asset('assets/img/kegiatan2.jpg') }}" alt="About"
-              class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            @if($profilContent['image'])
+              <img src="{{ Storage::url($profilContent['image']) }}" alt="About"
+                class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            @else
+              <img src="{{ asset('assets/img/kegiatan2.jpg') }}" alt="About"
+                class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            @endif
           </div>
         </div>
 
         <div data-aos="fade-left">
           <h3 class="text-himka-secondary font-bold tracking-widest text-sm mb-2 uppercase">Profil Organisasi</h3>
-          <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">This Is HIMKA</h2>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">{{ $profilContent['title'] }}</h2>
           <p class="text-gray-700 leading-relaxed mb-6 text-lg">
-            HIMA Kimia Universitas Maritim Raja Ali Haji (HIMKA UMRAH) dibentuk sebagai organisasi resmi yang menaungi
-            seluruh mahasiswa Program Studi Kimia.
+            {{ $profilContent['description'] }}
           </p>
+          @if(!empty($profilContent['description_2']))
           <p class="text-gray-600 leading-relaxed mb-8">
-            Sejak berdiri, HIMKA UMRAH aktif menyelenggarakan berbagai kegiatan seperti seminar ilmiah, pelatihan,
-            kompetisi, hingga kegiatan sosial untuk memperkuat kontribusi mahasiswa dalam lingkungan kampus dan masyarakat
-            luas.
+            {{ $profilContent['description_2'] }}
           </p>
+          @endif
 
           <div class="counter-section flex gap-8 border-t border-gray-200 pt-8">
             <div class="text-center">
-              <span class="block text-4xl font-bold text-himka-secondary mb-1" data-counter="5">0+</span>
+              <span class="block text-4xl font-bold text-himka-secondary mb-1" data-counter="{{ $profilContent['years_established'] }}">0+</span>
               <span class="text-gray-600 text-sm uppercase tracking-wide">Tahun Berdiri</span>
             </div>
             <div class="text-center">
-              <span class="block text-4xl font-bold text-himka-secondary mb-1" data-counter="20">0+</span>
+              <span class="block text-4xl font-bold text-himka-secondary mb-1" data-counter="{{ $profilContent['total_programs'] }}">0+</span>
               <span class="text-gray-600 text-sm uppercase tracking-wide">Program Kerja</span>
             </div>
             <div class="text-center">
-              <span class="block text-4xl font-bold text-himka-secondary mb-1" data-counter="100">0+</span>
+              <span class="block text-4xl font-bold text-himka-secondary mb-1" data-counter="{{ $profilContent['active_members'] }}">0+</span>
               <span class="text-gray-600 text-sm uppercase tracking-wide">Anggota Aktif</span>
             </div>
           </div>
@@ -153,12 +163,18 @@
           <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-himka-secondary transition-all duration-500 hover:w-32 hover:h-32"></div>
           <div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-himka-secondary transition-all duration-500 hover:w-32 hover:h-32"></div>
           <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-            <img src="{{ asset('images/ketuaumum.jpg') }}" 
-              alt="Ketua Umum HIMKA" 
-              class="w-full h-[500px] object-cover object-top">
+            @if($ketuaUmumContent['image'])
+              <img src="{{ Storage::url($ketuaUmumContent['image']) }}" 
+                alt="{{ $ketuaUmumContent['name'] }}" 
+                class="w-full h-[500px] object-cover object-top">
+            @else
+              <img src="{{ asset('images/ketuaumum.jpg') }}" 
+                alt="{{ $ketuaUmumContent['name'] }}" 
+                class="w-full h-[500px] object-cover object-top">
+            @endif
             <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-himka-secondary/90 to-transparent p-6">
-              <h3 class="text-white font-bold text-xl">Meicyntia Bella</h3>
-              <p class="text-white/80 text-sm">Ketua Umum HIMKA UMRAH 2024/2025</p>
+              <h3 class="text-white font-bold text-xl">{{ $ketuaUmumContent['name'] }}</h3>
+              <p class="text-white/80 text-sm">{{ $ketuaUmumContent['position'] }}</p>
             </div>
           </div>
         </div>
@@ -169,15 +185,13 @@
             <span class="material-icons text-himka-secondary/20 text-[120px] absolute -top-8 -left-4">format_quote</span>
             <div class="relative z-10 pl-8">
               <p class="text-gray-700 text-lg md:text-xl leading-relaxed italic mb-8">
-                "Sebagai keluarga besar HIMKA UMRAH, mari kita bersama-sama membangun semangat kolaborasi dan inovasi. 
-                Dengan tekad yang kuat dan kerja sama yang solid, kita akan membawa HIMKA menuju puncak prestasi. 
-                Reaksi bersatu, kimia maju, semangat tak pernah luntur!"
+                "{{ $ketuaUmumContent['quote'] }}"
               </p>
               <div class="flex items-center gap-4">
                 <div class="w-16 h-1 bg-himka-secondary rounded-full"></div>
                 <div>
-                  <h4 class="font-bold text-gray-900">Meicyntia Bella</h4>
-                  <p class="text-gray-600 text-sm">Ketua Umum HIMKA UMRAH</p>
+                  <h4 class="font-bold text-gray-900">{{ $ketuaUmumContent['name'] }}</h4>
+                  <p class="text-gray-600 text-sm">{{ $ketuaUmumContent['position'] }}</p>
                 </div>
               </div>
             </div>
@@ -187,12 +201,12 @@
             <div class="bg-himka-cream p-6 rounded-xl">
               <span class="material-icons text-himka-secondary text-3xl mb-2">emoji_events</span>
               <h5 class="font-bold text-gray-900 mb-1">Visi</h5>
-              <p class="text-gray-600 text-sm">Menjadikan HIMKA sebagai wadah pengembangan diri mahasiswa kimia</p>
+              <p class="text-gray-600 text-sm">{{ $ketuaUmumContent['visi'] }}</p>
             </div>
             <div class="bg-himka-cream p-6 rounded-xl">
               <span class="material-icons text-himka-secondary text-3xl mb-2">groups</span>
               <h5 class="font-bold text-gray-900 mb-1">Misi</h5>
-              <p class="text-gray-600 text-sm">Membangun solidaritas dan meningkatkan kualitas anggota</p>
+              <p class="text-gray-600 text-sm">{{ $ketuaUmumContent['misi'] }}</p>
             </div>
           </div>
         </div>

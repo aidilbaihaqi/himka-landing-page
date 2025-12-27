@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -63,4 +64,9 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // Site Settings
     Route::get('settings', [SiteSettingController::class, 'edit'])->name('settings.edit');
     Route::put('settings', [SiteSettingController::class, 'update'])->name('settings.update');
+
+    // Landing Page Content
+    Route::get('landing-page', [LandingPageController::class, 'edit'])->name('landing-page.edit');
+    Route::put('landing-page', [LandingPageController::class, 'update'])->name('landing-page.update');
+    Route::get('landing-page/delete-image', [LandingPageController::class, 'deleteImage'])->name('landing-page.delete-image');
 });
