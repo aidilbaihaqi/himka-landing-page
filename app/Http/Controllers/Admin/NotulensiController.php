@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notulensi;
+use App\Models\Pengurus;
 use App\Models\User;
 use App\Notifications\NotulensiCreated;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class NotulensiController extends Controller
 
     public function create()
     {
-        return view('admin.notulensi.create');
+        $pengurusAktif = Pengurus::with('user')->active()->orderBy('sort_order')->get();
+        return view('admin.notulensi.create', compact('pengurusAktif'));
     }
 
     public function store(Request $request)
@@ -34,13 +36,26 @@ class NotulensiController extends Controller
             'meeting_date' => 'required|date',
             'meeting_time' => 'nullable',
             'location' => 'nullable|max:255',
-            'attendees' => 'nullable',
+            'attendees_list' => 'nullable|array',
+            'attendees_extra' => 'nullable|string',
             'agenda' => 'required',
             'discussion' => 'nullable',
             'decisions' => 'nullable',
             'action_items' => 'nullable',
             'attachment' => 'nullable|file|max:5120',
         ]);
+
+        // Combine attendees from checkboxes and extra input
+        $attendees = [];
+        if (!empty($validated['attendees_list'])) {
+            $attendees = array_merge($attendees, $validated['attendees_list']);
+        }
+        if (!empty($validated['attendees_extra'])) {
+            $extraAttendees = array_map('trim', explode(',', $validated['attendees_extra']));
+            $attendees = array_merge($attendees, array_filter($extraAttendees));
+        }
+        $validated['attendees'] = implode(', ', $attendees);
+        unset($validated['attendees_list'], $validated['attendees_extra']);
 
         $validated['user_id'] = auth()->id();
 
@@ -64,7 +79,8 @@ class NotulensiController extends Controller
 
     public function edit(Notulensi $notulensi)
     {
-        return view('admin.notulensi.edit', compact('notulensi'));
+        $pengurusAktif = Pengurus::with('user')->active()->orderBy('sort_order')->get();
+        return view('admin.notulensi.edit', compact('notulensi', 'pengurusAktif'));
     }
 
     public function update(Request $request, Notulensi $notulensi)
@@ -74,13 +90,26 @@ class NotulensiController extends Controller
             'meeting_date' => 'required|date',
             'meeting_time' => 'nullable',
             'location' => 'nullable|max:255',
-            'attendees' => 'nullable',
+            'attendees_list' => 'nullable|array',
+            'attendees_extra' => 'nullable|string',
             'agenda' => 'required',
             'discussion' => 'nullable',
             'decisions' => 'nullable',
             'action_items' => 'nullable',
             'attachment' => 'nullable|file|max:5120',
         ]);
+
+        // Combine attendees from checkboxes and extra input
+        $attendees = [];
+        if (!empty($validated['attendees_list'])) {
+            $attendees = array_merge($attendees, $validated['attendees_list']);
+        }
+        if (!empty($validated['attendees_extra'])) {
+            $extraAttendees = array_map('trim', explode(',', $validated['attendees_extra']));
+            $attendees = array_merge($attendees, array_filter($extraAttendees));
+        }
+        $validated['attendees'] = implode(', ', $attendees);
+        unset($validated['attendees_list'], $validated['attendees_extra']);
 
         if ($request->hasFile('attachment')) {
             if ($notulensi->attachment) {

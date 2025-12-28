@@ -53,12 +53,6 @@
       Galeri
     </a>
 
-    <a href="{{ route('admin.pengurus.index') }}"
-      class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.pengurus.*') ? 'bg-himka-accent text-white shadow-lg' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
-      <span class="material-icons text-xl">people</span>
-      Pengurus
-    </a>
-
     <a href="{{ route('admin.notulensi.index') }}"
       class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.notulensi.*') ? 'bg-himka-accent text-white shadow-lg' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
       <span class="material-icons text-xl">description</span>
@@ -87,6 +81,11 @@
       class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.settings.*') ? 'bg-himka-accent text-white' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
       <span class="material-icons text-xl">contact_mail</span>
       Kontak Footer
+    </a>
+    <a href="{{ route('admin.pengurus.index') }}"
+      class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.pengurus.*') ? 'bg-himka-accent text-white shadow-lg' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
+      <span class="material-icons text-xl">people</span>
+      Data Pengurus
     </a>
     <a href="{{ route('admin.profile.edit') }}"
       class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium {{ request()->routeIs('admin.profile.*') ? 'bg-himka-accent text-white' : 'text-white/60 hover:bg-white/10 hover:text-white' }}">
