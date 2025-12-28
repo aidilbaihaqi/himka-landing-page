@@ -44,6 +44,7 @@ class ArticleController extends Controller
 
         $validated['user_id'] = auth()->id();
         $validated['slug'] = Str::slug($validated['title']) . '-' . Str::random(5);
+        $validated['content'] = $this->sanitizeHtml($validated['content']);
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('articles', 'public');
@@ -76,6 +77,8 @@ class ArticleController extends Controller
             'is_published' => 'boolean',
         ]);
 
+        $validated['content'] = $this->sanitizeHtml($validated['content']);
+
         if ($request->hasFile('image')) {
             if ($article->image) {
                 Storage::disk('public')->delete($article->image);
@@ -100,5 +103,15 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect()->route('admin.articles.index')->with('success', 'Artikel berhasil dihapus!');
+    }
+
+    /**
+     * Sanitize HTML content - allow safe tags only
+     */
+    private function sanitizeHtml(string $content): string
+    {
+        $allowedTags = '<p><br><strong><b><em><i><u><s><strike><h1><h2><h3><h4><h5><h6><ul><ol><li><a><img><blockquote><pre><code><table><thead><tbody><tr><th><td><hr><span><div>';
+        
+        return strip_tags($content, $allowedTags);
     }
 }

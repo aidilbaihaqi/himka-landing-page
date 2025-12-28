@@ -16,7 +16,14 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  
+  <!-- Quill Editor -->
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+  
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+  
+  @stack('styles')
 </head>
 
 <body class="font-sans antialiased bg-himka-cream text-himka-secondary">

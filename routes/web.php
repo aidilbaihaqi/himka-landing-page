@@ -13,12 +13,14 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\LandingPageController;
+use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/berita', [HomeController::class, 'articles'])->name('articles.index');
 Route::get('/berita/{article:slug}', [HomeController::class, 'articleShow'])->name('articles.show');
+Route::get('/api/kegiatan-calendar', [HomeController::class, 'kegiatanCalendar'])->name('api.kegiatan-calendar');
 
 // Auth Routes
 Route::middleware('guest')->group(function () {
@@ -69,4 +71,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('landing-page', [LandingPageController::class, 'edit'])->name('landing-page.edit');
     Route::put('landing-page', [LandingPageController::class, 'update'])->name('landing-page.update');
     Route::get('landing-page/delete-image', [LandingPageController::class, 'deleteImage'])->name('landing-page.delete-image');
+
+    // Upload
+    Route::post('upload/image', [UploadController::class, 'image'])->name('upload.image');
 });

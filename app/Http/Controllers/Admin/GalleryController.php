@@ -13,7 +13,7 @@ class GalleryController extends Controller
     {
         $galleries = Gallery::with('user')
             ->when($request->search, fn($q) => $q->where('title', 'like', "%{$request->search}%"))
-            ->orderBy('sort_order')
+            ->latest()
             ->paginate(12);
 
         return view('admin.galleries.index', compact('galleries'));
@@ -30,7 +30,6 @@ class GalleryController extends Controller
             'title' => 'required|max:255',
             'description' => 'nullable|max:500',
             'image' => 'required|image|max:2048',
-            'sort_order' => 'nullable|integer',
             'is_active' => 'boolean',
         ]);
 
@@ -53,7 +52,6 @@ class GalleryController extends Controller
             'title' => 'required|max:255',
             'description' => 'nullable|max:500',
             'image' => 'nullable|image|max:2048',
-            'sort_order' => 'nullable|integer',
             'is_active' => 'boolean',
         ]);
 

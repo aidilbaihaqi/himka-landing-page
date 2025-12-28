@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $galleries = Gallery::active()->orderBy('sort_order')->take(10)->get();
+        $galleries = Gallery::active()->latest()->take(10)->get();
         $featuredArticle = Article::published()->featured()->with('category', 'user')->latest()->first();
         $articles = Article::published()->with('category', 'user')->latest()->take(4)->get();
         $categories = Category::where('type', 'article')->withCount(['articles' => fn($q) => $q->published()])->get();
@@ -47,5 +47,31 @@ class HomeController extends Controller
             ->get();
 
         return view('articles.show', compact('article', 'relatedArticles'));
+    }
+
+    public function kegiatanCalendar(Request $request)
+    {
+        $year = $request->get('year', date('Y'));
+        $month = $request->get('month', date('m'));
+
+        $kegiatan = Kegiatan::where('is_published', true)
+            ->whereNotNull('event_date')
+            ->whereYear('event_date', $year)
+            ->whereMonth('event_date', $month)
+            ->select('id', 'title', 'event_date', 'location')
+            ->orderBy('event_date')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'title' => $item->title,
+                    'date' => $item->event_date->format('Y-m-d'),
+                    'day' => $item->event_date->format('d'),
+                    'location' => $item->location,
+                    'isPast' => $item->event_date->isPast(),
+                ];
+            });
+
+        return response()->json($kegiatan);
     }
 }

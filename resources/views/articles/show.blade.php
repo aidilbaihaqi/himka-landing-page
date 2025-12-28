@@ -46,8 +46,8 @@
       </p>
     @endif
 
-    <div class="prose prose-lg max-w-none prose-headings:text-himka-secondary prose-p:text-himka-secondary/80 prose-a:text-himka-accent">
-      {!! nl2br(e($article->content)) !!}
+    <div class="prose prose-lg max-w-none prose-headings:text-himka-secondary prose-p:text-himka-secondary/80 prose-a:text-himka-accent prose-img:rounded-xl prose-img:shadow-lg">
+      {!! $article->content !!}
     </div>
 
     <!-- Share Buttons -->
