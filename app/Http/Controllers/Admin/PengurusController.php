@@ -16,7 +16,7 @@ class PengurusController extends Controller
         $pengurus = Pengurus::with('user')
             ->when($request->search, fn($q) => $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$request->search}%")))
             ->when($request->divisi, fn($q) => $q->where('divisi', $request->divisi))
-            ->latest()
+            ->orderBy('sort_order')
             ->paginate(10);
 
         $divisiList = Pengurus::distinct()->pluck('divisi')->filter();
@@ -43,6 +43,7 @@ class PengurusController extends Controller
             'periode_start' => 'required|digits:4',
             'periode_end' => 'required|digits:4',
             'is_active' => 'boolean',
+            'sort_order' => 'nullable|integer|min:0',
         ]);
 
         // Create user with default password
@@ -62,6 +63,7 @@ class PengurusController extends Controller
             'periode_start' => $validated['periode_start'],
             'periode_end' => $validated['periode_end'],
             'is_active' => $validated['is_active'] ?? true,
+            'sort_order' => $validated['sort_order'] ?? 0,
         ];
 
         if ($request->hasFile('photo')) {
@@ -92,6 +94,7 @@ class PengurusController extends Controller
             'periode_start' => 'required|digits:4',
             'periode_end' => 'required|digits:4',
             'is_active' => 'boolean',
+            'sort_order' => 'nullable|integer|min:0',
         ]);
 
         $penguru->user->update([
@@ -108,6 +111,7 @@ class PengurusController extends Controller
             'periode_start' => $validated['periode_start'],
             'periode_end' => $validated['periode_end'],
             'is_active' => $validated['is_active'] ?? false,
+            'sort_order' => $validated['sort_order'] ?? 0,
         ];
 
         if ($request->hasFile('photo')) {

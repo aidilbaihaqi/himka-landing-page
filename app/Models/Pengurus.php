@@ -14,7 +14,7 @@ class Pengurus extends Model
 
     protected $fillable = [
         'user_id', 'nim', 'jabatan', 'divisi', 'phone',
-        'photo', 'bio', 'periode_start', 'periode_end', 'is_active'
+        'photo', 'bio', 'periode_start', 'periode_end', 'is_active', 'sort_order'
     ];
 
     protected $casts = [

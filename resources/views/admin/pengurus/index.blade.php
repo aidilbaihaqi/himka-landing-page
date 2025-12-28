@@ -75,18 +75,12 @@
               </td>
               <td class="px-4 py-3 text-right">
                 <div class="flex items-center justify-end gap-1">
-                  <form action="{{ route('admin.pengurus.reset-password', $item) }}" method="POST" onsubmit="return confirm('Reset password ke default?')">
-                    @csrf
-                    <button type="submit" class="p-2 text-himka-secondary hover:text-himka-accent transition-colors" title="Reset Password">
-                      <span class="material-icons text-lg">lock_reset</span>
-                    </button>
-                  </form>
-                  <a href="{{ route('admin.pengurus.edit', $item) }}" class="p-2 text-himka-secondary hover:text-himka-accent transition-colors">
+                  <a href="{{ route('admin.pengurus.edit', $item) }}" class="p-2 text-himka-secondary hover:text-himka-accent transition-colors" title="Edit">
                     <span class="material-icons text-lg">edit</span>
                   </a>
                   <form action="{{ route('admin.pengurus.destroy', $item) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
                     @csrf @method('DELETE')
-                    <button type="submit" class="p-2 text-red-500 hover:text-red-700 transition-colors">
+                    <button type="submit" class="p-2 text-red-500 hover:text-red-700 transition-colors" title="Hapus">
                       <span class="material-icons text-lg">delete</span>
                     </button>
                   </form>

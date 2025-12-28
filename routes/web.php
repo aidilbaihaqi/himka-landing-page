@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/pengurus', [HomeController::class, 'pengurus'])->name('pengurus.index');
 Route::get('/berita', [HomeController::class, 'articles'])->name('articles.index');
 Route::get('/berita/{article:slug}', [HomeController::class, 'articleShow'])->name('articles.show');
 Route::get('/api/kegiatan-calendar', [HomeController::class, 'kegiatanCalendar'])->name('api.kegiatan-calendar');

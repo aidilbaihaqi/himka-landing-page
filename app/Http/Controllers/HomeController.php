@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\Kegiatan;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,6 +19,13 @@ class HomeController extends Controller
         $categories = Category::where('type', 'article')->withCount(['articles' => fn($q) => $q->published()])->get();
 
         return view('home', compact('galleries', 'featuredArticle', 'articles', 'categories'));
+    }
+
+    public function pengurus()
+    {
+        $pengurus = Pengurus::with('user')->active()->orderBy('sort_order')->get();
+
+        return view('pengurus.index', compact('pengurus'));
     }
 
     public function articles(Request $request)
