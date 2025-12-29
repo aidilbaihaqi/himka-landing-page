@@ -27,5 +27,8 @@ class DatabaseSeeder extends Seeder
                 'type' => 'article',
             ]);
         }
+
+        // Seed pengurus data
+        $this->call(PengurusSeeder::class);
     }
 }
